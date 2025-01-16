@@ -1,0 +1,67 @@
+.container {
+	background-color: var(--primary-bg);
+}
+
+.block{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75ch;
+
+	color: var(--primary-text);
+
+	span {
+		font-size: 1em;
+	}
+}
+
+:root {
+	--facebook: #17a9fd;
+	--instagram: #f5a844;
+	--youtube: #ff0000;
+}
+
+.contact {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1ch;
+
+	font-size: 1.5em;
+
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		svg {
+			padding: 0.25em;
+			border-radius: 0.25em;
+			color: var(--primary-text);
+			transition: background-color 0.3s ease-out, color 0.5s ease-in;
+
+			&:hover {
+				background-color: var(--primary-text);
+			}
+		}
+
+		svg[id="facebook"] {
+			&:hover {
+				color: var(--facebook);
+			}
+		}
+
+		svg[id="instagram"] {
+			&:hover {
+				color: var(--instagram);
+			}
+		}
+
+		svg[id="youtube"] {
+			&:hover {
+				color: var(--youtube);
+			}
+		}
+	}
+}

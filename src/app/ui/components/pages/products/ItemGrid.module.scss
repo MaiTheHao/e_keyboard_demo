@@ -1,0 +1,23 @@
+.gridItems{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(var(--items-per-row), var(--item-card-width));
+    gap: var(--items-gap);
+
+    /* &:has(:hover)>div[class~="card"]:not(:hover){
+        opacity: 0.5;
+    } */
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #e0e0e0;
+    }
+    50% {
+        background-color: #f0f0f0;
+    }
+    100% {
+        background-color: #e0e0e0;
+    }
+}

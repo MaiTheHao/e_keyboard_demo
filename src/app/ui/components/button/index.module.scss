@@ -1,0 +1,26 @@
+.linkButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1ch;
+
+	font-size: 1em;
+	text-decoration: none;
+	transition: color 0.3s;
+
+	background-color: var(--secondary-bg);
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+
+	color: var(--primary-text);
+	transition: background-color 0.3s ease-out;
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--secondary-bg-hover);
+	}
+
+	&:active {
+		background-color: var(--secondary-bg);
+	}
+}

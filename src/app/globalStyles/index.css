@@ -1,0 +1,43 @@
+@import url(./reset.css);
+@import url(./root.css);
+
+* {
+	font-size: 1em;
+	border: none;
+	outline: none;
+}
+
+#root {
+	position: relative;
+	width: 100vw;
+	height: max-content;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.webpart {
+	width: 100vw;
+	height: max-content;
+}
+
+.top-container {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 8px 16px;
+}
+
+.top-body{
+	width: 100%;
+	min-height: 100vh;
+
+	z-index: var(--z-index-body);
+}
+
+@media screen and (max-width: 768px) {
+	.top-container {
+		padding: 8px;
+	}
+}

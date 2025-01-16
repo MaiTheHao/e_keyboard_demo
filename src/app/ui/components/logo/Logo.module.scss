@@ -1,0 +1,21 @@
+.container{
+    width: max-content;
+    height: max-content;
+    font-size: 1em;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1ch;
+
+    background-color: var(--secondary-bg);
+    border-radius: .25em;
+
+    color: var(--primary-text);
+    letter-spacing: .5ch;
+    font-weight: 500;
+
+    padding: 0.5em 1em;
+}

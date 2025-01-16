@@ -1,0 +1,21 @@
+.gitignore
+jsconfig.json
+next.config.mjs
+package.json
+public/
+README.md
+src/
+  app/
+    components/
+    pages/
+      api/
+        products/
+          index.js
+          [id].js
+      index.js
+  lib/
+    mongodb.js
+  models/
+    Product.js
+  utils/
+    helpers.js

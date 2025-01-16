@@ -1,0 +1,39 @@
+.searchBlock {
+	width: clamp(400px, 50%, 500px);
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1ch;
+
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+
+	font-size: 1em;
+
+	background-color: var(--primary-text);
+	border: 0.1em solid var(--primary-border);
+	outline: 0.2em solid transparent;
+
+	transition: all 0.2s ease-in-out;
+
+	input {
+		flex: 1;
+		background-color: transparent;
+		color: var(--secondary-text);
+		
+		&::placeholder {
+			color: var(--third-text);
+			
+		}
+
+		&*{
+			letter-spacing: 0.15ch;
+		}
+	}
+
+	svg {
+		width: max-content;
+		color: var(--secondary-text)
+	}
+}

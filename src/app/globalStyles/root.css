@@ -1,0 +1,25 @@
+:root {
+    /* COLOR */
+    --primary-bg: #FA812F;
+    --primary-bg-hover: #E85C0D;
+    --secondary-bg: #FAB12F;
+    --secondary-bg-hover: #E69900;
+    --primary-text: white;
+    --secondary-text: #333;
+    --third-text: #999;
+    --primary-border: rgb(229, 225, 218);
+    --secondary-border: rgb(241, 240, 232);
+
+    --success: #6fae8a;
+    --error: #e05c5c;
+    --warning: #ffcc80;
+    --info: #80bfff;
+
+    /* SIZE */
+    --header-height: 84px;
+
+    /* INDEX */
+    --z-index-body: 200;
+    --z-index-header: 400;
+    --z-index-dropdown: 500;
+}
