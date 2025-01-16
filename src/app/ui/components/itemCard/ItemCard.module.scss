@@ -123,40 +123,13 @@
     font-size: 0.8em;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1200px) {
-    :root {
-        --item-card-width: 160px;
-        --items-per-row: 4;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    :root {
-        --item-card-width: 150px;
-        --items-per-row: 3;
-    }
-}
-
 @media screen and (max-width: 600px) {
-    :root {
-        --item-card-width: 140px;
-        --items-per-row: 2;
-        --item-card-font-size: calc(var(--item-card-width) / 14);
-    }
-
     .popupHoverContainer {
         display: none;
     }
 }
 
 @media screen and (max-width: 380px) {
-    :root {
-        --item-card-width: 130px;
-        --items-per-row: 2;
-        --card-padding: calc(var(--card-border-radius) / 1.2);
-    }
-
     .description {
         -webkit-line-clamp: 1;
     }

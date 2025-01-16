@@ -40,3 +40,33 @@
 
     --image-border-radius: calc(var(--card-border-radius) - var(--card-padding) / 2);
 }
+
+@media screen and (max-width: 1200px) {
+    :root {
+        --item-card-width: 160px;
+        --items-per-row: 4;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    :root {
+        --item-card-width: 150px;
+        --items-per-row: 3;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --item-card-width: 140px;
+        --items-per-row: 2;
+        --item-card-font-size: calc(var(--item-card-width) / 14);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    :root {
+        --item-card-width: 130px;
+        --items-per-row: 2;
+        --card-padding: calc(var(--card-border-radius) / 1.2);
+    }
+}
