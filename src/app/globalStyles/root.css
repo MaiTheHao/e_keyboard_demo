@@ -15,6 +15,10 @@
     --warning: #ffcc80;
     --info: #80bfff;
 
+    --facebook: #17a9fd;
+	--instagram: #f5a844;
+	--youtube: #ff0000;
+
     /* SIZE */
     --header-height: 84px;
 
@@ -22,4 +26,17 @@
     --z-index-body: 200;
     --z-index-header: 400;
     --z-index-dropdown: 500;
+
+    /* ITEM CARD */
+    --item-card-width: 184px;
+    --item-card-font-size: calc(var(--item-card-width) / 16);
+    --item-card-aspect-ratio: 2 / 3;
+    --items-per-row: 5;
+    --items-gap: 1ch;
+
+    --card-border-radius: calc(var(--item-card-width) / 40);
+    --card-padding: calc(var(--card-border-radius) / 0.8);
+    --card-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+    --image-border-radius: calc(var(--card-border-radius) - var(--card-padding) / 2);
 }
