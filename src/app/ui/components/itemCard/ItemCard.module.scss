@@ -92,7 +92,7 @@
 	font-size: var(--item-card-v-font-size);
 	aspect-ratio: var(--item-card-v-aspect-ratio);
 	padding: var(--item-card-v-padding);
-	box-shadow: var(--item-card-v-box-shadow);
+	box-shadow: var(--primary-box-shadow);
 	border-radius: var(--item-card-v-border-radius);
 
 	.image {
@@ -149,8 +149,22 @@
 	gap: 2ch;
 	font-size: var(--item-card-h-font-size);
 	padding: var(--item-card-h-padding);
-	box-shadow: var(--item-card-h-box-shadow);
+	box-shadow: var(--primary-box-shadow);
 	border-radius: var(--item-card-h-border-radius);
+
+	&:hover{
+		background-color: rgb(0, 0, 0, 0.5);
+		.details{
+			.name,
+			.description{
+				color: var(--primary-text);
+			}
+
+			.price{
+				color: var(--secondary-bg);
+			}
+		}
+	}
 
 	.image {
 		border-radius: var(--item-card-h-inner-border-radius);

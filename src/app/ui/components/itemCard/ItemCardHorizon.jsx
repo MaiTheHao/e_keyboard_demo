@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import styles from "./ItemCard.module.scss";
 import NullImage from "./NullImage";
+import Link from "next/link";
 
 function ItemCardHorizon({ product }) {
 	const itemHref = `/product/${product.id}`;
 	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
-		<div className={`${styles.container} ${styles.ItemCardHorizon} card`}>
+		<Link href={itemHref} className={`${styles.container} ${styles.ItemCardHorizon} card`}>
 			<div className={styles.image}>
 				{product.src ? <Image src={product.src} alt={`Ảnh sản phẩm: ${product.name}`} fill /> : <NullImage />}
 			</div>
@@ -21,7 +22,7 @@ function ItemCardHorizon({ product }) {
 					<span>{product.currency}</span>
 				</h1>
 			</div>
-		</div>
+		</Link>
 	);
 }
 

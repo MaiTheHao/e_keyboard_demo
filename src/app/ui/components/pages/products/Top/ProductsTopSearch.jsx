@@ -7,6 +7,7 @@ import { searchByName } from "@/lib/search";
 import normalize from "@/utils/normalize";
 import styles from "./ProductsTop.module.scss";
 import ItemCardHorizon from "../../../itemCard/ItemCardHorizon";
+import clsx from "clsx";
 
 const FETCH_ACTION_DELAY = 500; // miliseconds
 
@@ -51,7 +52,7 @@ function ProductsTopSearch() {
 					spin={isLoading}
 				/>
 			</div>
-			<ul className={styles.searchResultsWrapper}>
+			<ul className={`${styles.searchResultsWrapper} ${clsx({ "hidden": searchResults.length === 0 })}`}>
 				{
 					searchResults.map((product, index) => <ItemCardHorizon key={index} product={product} />)
 				}

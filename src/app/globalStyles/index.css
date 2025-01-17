@@ -36,6 +36,10 @@
 	z-index: var(--z-index-body);
 }
 
+.hidden{
+	display: none !important;  
+}
+
 @media screen and (max-width: 768px) {
 	.top-container {
 		padding: 8px;

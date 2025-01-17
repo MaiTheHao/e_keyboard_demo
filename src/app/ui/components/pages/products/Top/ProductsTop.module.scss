@@ -52,7 +52,7 @@ $max-items-to-show: 4;
 		overflow-y: auto;
 		background-color: var(--primary-text);
 
-		border: 0.05ch solid var(--primary-border);
+		box-shadow: var(--primary-box-shadow);
 
 		&::-webkit-scrollbar {
 			width: 0.5ch;
