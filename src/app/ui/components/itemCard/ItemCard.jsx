@@ -19,7 +19,7 @@ function ItemCard({ product }) {
 				<div className={styles.popupHoverContainer}>
 					<div className={styles.popupHoverBlock}>
 						<LinkBtn href={itemHref} text="Xem chi tiết" icon={faEye} />
-						<LinkBtn href="/cart/1234123142" text="Thêm vào giỏ hàng" icon={faCartShopping} />
+						<LinkBtn href="/cart" text="Thêm vào giỏ hàng" icon={faCartShopping} />
 					</div>
 				</div>
 			</div>
