@@ -1,26 +1,26 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
-    list-style: none;
-    text-decoration: none;
+	list-style: none;
+	text-decoration: none;
 }
 
-html{
-    font-size: 16px;
+html {
+	font-size: 16px;
 }
 
-body{
-    background-color: var(--primary-text);
-    overflow-x: hidden;
+body {
+	background-color: var(--primary-text);
+	overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
-    width: 0;
+	width: 0;
 }
 
-input{
-    border: none;
-    outline: none;
+input {
+	border: none;
+	outline: none;
 }
