@@ -2,8 +2,8 @@
 	position: sticky;
 	top: 0;
 
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 
 	height: var(--header-height);
 	z-index: var(--z-index-header);
@@ -38,9 +38,9 @@
 	align-items: center;
 	gap: 2ch;
 
-    &.menuOpen{
-        z-index: var(--z-index-dropdown);
-    }
+	&.menuOpen {
+		z-index: var(--z-index-dropdown);
+	}
 
 	a {
 		display: flex;
@@ -63,9 +63,9 @@
 }
 
 @media (max-width: 768px) {
-    .container {
-        position: relative;
-    }
+	.container {
+		position: relative;
+	}
 
 	.menuButton {
 		display: block;

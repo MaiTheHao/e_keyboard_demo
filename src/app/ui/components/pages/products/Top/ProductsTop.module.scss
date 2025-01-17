@@ -21,10 +21,9 @@
 		flex: 1;
 		background-color: transparent;
 		color: var(--secondary-text);
-		
+
 		&::placeholder {
 			color: var(--third-text);
-			
 		}
 
 		& {
@@ -34,6 +33,6 @@
 
 	svg {
 		width: max-content;
-		color: var(--secondary-text)
+		color: var(--secondary-text);
 	}
 }

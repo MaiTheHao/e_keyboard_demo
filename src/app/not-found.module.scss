@@ -16,7 +16,7 @@
 	font-size: 5em;
 	color: var(--error);
 	animation: name duration timing-function delay iteration-count direction fill-mode;
-    animation: shake 1s linear infinite;
+	animation: shake 1s linear infinite;
 }
 
 @keyframes shake {

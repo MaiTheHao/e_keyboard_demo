@@ -1,54 +1,54 @@
-.card{
-    min-width: max-content;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5ch;
+.card {
+	min-width: max-content;
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5ch;
 
-    padding: 3em 1em;
-    margin: 0 auto;
+	padding: 3em 1em;
+	margin: 0 auto;
 
-    font-size: 1.25em;
-    
-    &:not(:last-child) {
-        border-bottom: 0.1em solid var(--primary-bg);
-    }
+	font-size: 1.25em;
+
+	&:not(:last-child) {
+		border-bottom: 0.1em solid var(--primary-bg);
+	}
 }
 
-.card__title{
-    letter-spacing: .25ch;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--primary-bg);
+.card__title {
+	letter-spacing: 0.25ch;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--primary-bg);
 
-    font-size: 1.5em;
+	font-size: 1.5em;
 }
 
-.card__description{
-    display: flex;
-    flex-direction: column;
-    gap: .5ch;
-        
-    color: var(--third-text);
-    text-align: center;
+.card__description {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5ch;
+
+	color: var(--third-text);
+	text-align: center;
 }
 
-.card__button{
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    background-color: var(--primary-bg);
-    color: var(--primary-text);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.card__button {
+	padding: 0.5em 1em;
+	border: none;
+	border-radius: 0.5em;
+	background-color: var(--primary-bg);
+	color: var(--primary-text);
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s;
 
-    &:hover{
-        background-color: var(--secondary-bg);
-    }
+	&:hover {
+		background-color: var(--secondary-bg);
+	}
 
-    & > svg{
-        margin-left: 0.5em;
-    }
+	& > svg {
+		margin-left: 0.5em;
+	}
 }
