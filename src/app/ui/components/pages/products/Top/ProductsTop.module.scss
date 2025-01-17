@@ -1,38 +1,85 @@
-.searchBlock {
+$max-items-to-show: 4;
+
+.search {
+	position: relative;
 	width: clamp(400px, 50%, 500px);
+	.searchBar {
+		width: 100%;
+		background-color: var(--primary-text);
+		border: 0.1em solid var(--primary-border);
+		outline: 0.2em solid transparent;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 1ch;
 
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	gap: 1ch;
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
 
-	padding: 0.5em 1em;
-	border-radius: 0.5em;
+		font-size: 1em;
+		transition: all 0.2s ease-in-out;
 
-	font-size: 1em;
+		input {
+			flex: 1;
+			background-color: transparent;
+			color: var(--secondary-text);
 
-	background-color: var(--primary-text);
-	border: 0.1em solid var(--primary-border);
-	outline: 0.2em solid transparent;
+			&::placeholder {
+				color: var(--third-text);
+			}
 
-	transition: all 0.2s ease-in-out;
-
-	input {
-		flex: 1;
-		background-color: transparent;
-		color: var(--secondary-text);
-
-		&::placeholder {
-			color: var(--third-text);
+			& {
+				letter-spacing: 0.15ch;
+			}
 		}
 
-		& {
-			letter-spacing: 0.15ch;
+		svg {
+			width: max-content;
+			color: var(--secondary-text);
 		}
 	}
+	.searchResultsWrapper {
+		position: absolute;
+		width: 100%;
+		height: max-content;
+		max-height: calc(var(--item-card-h-height) * $max-items-to-show);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		margin-top: 1ch;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: var(--primary-text);
 
-	svg {
-		width: max-content;
-		color: var(--secondary-text);
+		border: 0.05ch solid var(--primary-border);
+
+		&::-webkit-scrollbar {
+			width: 0.5ch;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: var(--third-text);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: var(--secondary-text);
+			&:hover {
+				background: var(--secondary-text);
+			}
+		}
+
+		*[class*="card"] {
+			border-radius: 0;
+			box-shadow: none;
+
+			&:not(:last-child) {
+				border-bottom: 0.2ch solid var(--primary-border);
+			}
+
+			&:last-child:nth-child(n + #{$max-items-to-show + 1}) {
+				margin-bottom: calc(var(--item-card-h-height) * ($max-items-to-show - 1));
+			}
+		}
 	}
 }

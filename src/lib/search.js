@@ -3,7 +3,7 @@
 import normalize from "@/utils/normalize";
 const { getProductsByQuery, serializeProducts } = require("@/models/product");
 
-export async function searchByName(name) {
+export async function searchByName(name, limit = 5) {
     name = normalize(name);
     const searchTerms = name.split(/\s+/).filter(term => term.length > 0);
     const searchFields = [
@@ -19,6 +19,6 @@ export async function searchByName(name) {
         }))
     };
 
-    const products = await getProductsByQuery(query, 10);
+    const products = await getProductsByQuery(query, limit);
     return serializeProducts(products);
 }

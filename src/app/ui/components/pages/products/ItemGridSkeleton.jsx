@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ItemGrid.module.scss";
-import ItemCardSkeleton from "../../itemCard/ItemCardSkeleton";
+import ItemCardVerticalSkeleton from "../../itemCard/ItemCardVerticalSkeleton";
+import ItemCardHorizonSkeleton from "../../itemCard/ItemCardHorizonSkeleton";
 
 function ItemGridSkeleton({count = 15}) {
     const skeletonItems = Array.from({ length: count });
@@ -8,7 +9,7 @@ function ItemGridSkeleton({count = 15}) {
     return (
         <div className={styles.gridItems}>
             {skeletonItems.map((_, index) => (
-                <ItemCardSkeleton key={`itemcardskeleton-${index}`} />
+                <ItemCardVerticalSkeleton key={`ItemCardVerticalSkeleton-${index}`} />
             ))}
         </div>
     );

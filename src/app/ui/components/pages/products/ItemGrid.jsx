@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ItemGrid.module.scss";
-import { getAllProducts } from "@/models/product";
-import ItemCard from "../../itemCard/ItemCard";
+import { getAllProducts, serializeProduct } from "@/models/product";
+import ItemCard from "../../itemCard/ItemCardVertical";
 
 async function ItemGrid() {
 	const products = await getAllProducts();
@@ -10,7 +10,7 @@ async function ItemGrid() {
 			{products.map((product) => (
 				<ItemCard
 					key={`product_id_${product?.id}`}
-					product={product}
+					product={serializeProduct(product)}
 				/>
 			))}
 		</div>

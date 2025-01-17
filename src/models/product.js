@@ -93,14 +93,14 @@ export default class Product {
 }
 
 // Middleware
-function convertToProduct(doc) {
+export function convertToProduct(doc) {
 	return new Product({
 		...doc,
 		_id: doc._id.toString(),
 	});
 }
 
-function convertToProducts(docs) {
+export function convertToProducts(docs) {
 	return docs.map((doc) => convertToProduct(doc));
 }
 

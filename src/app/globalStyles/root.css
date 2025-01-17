@@ -27,46 +27,63 @@
 	--z-index-header: 400;
 	--z-index-dropdown: 500;
 
-	/* ITEM CARD */
-	--item-card-width: 200px;
-	--item-card-font-size: calc(var(--item-card-width) / 16);
-	--item-card-aspect-ratio: 2 / 3;
-	--items-per-row: 5;
-	--items-gap: 1ch;
+	/* ITEM CARD VERTICAL*/
+	--item-card-v-width: 200px;
+	--item-card-v-font-size: calc(var(--item-card-v-width) / 16);
+	
+	--item-card-v-aspect-ratio: 2 / 3;
+	--item-card-v-per-row: 5;
+	--item-card-v-gap: 1ch;
 
-	--card-border-radius: calc(var(--item-card-width) / 40);
-	--card-padding: calc(var(--card-border-radius) / 0.8);
-	--card-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+	--item-card-v-border-radius: calc(var(--item-card-v-width) / 40);
+	--item-card-v-padding: calc(var(--item-card-v-border-radius) / 0.8);
+	--item-card-v-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
-	--image-border-radius: calc(var(--card-border-radius) - var(--card-padding) / 2);
+	--item-card-v-inner-border-radius: calc(var(--item-card-v-border-radius) - var(--item-card-v-padding) / 2);
+
+	/* ITEM CARD HORIZON */
+	--item-card-h-height: 80px;
+	--item-card-h-font-size: calc(var(--item-card-h-height) / 16);
+
+	--item-card-h-border-radius: calc(var(--item-card-h-height) / 20);
+	--item-card-h-padding: calc(var(--item-card-h-border-radius) / 0.8);
+	--item-card-h-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+	--item-card-h-inner-border-radius: calc(var(--item-card-h-border-radius) - var(--item-card-h-padding) / 2);
 }
 
 @media screen and (max-width: 1200px) {
 	:root {
-		--item-card-width: 176px;
-		--items-per-row: 4;
+		--item-card-v-width: 176px;
+		--item-card-v-per-row: 4;
+		--item-card-h-height: 70px;
 	}
 }
 
 @media screen and (max-width: 900px) {
 	:root {
-		--item-card-width: 166px;
-		--items-per-row: 3;
+		--item-card-v-width: 166px;
+		--item-card-v-per-row: 3;
+		--item-card-h-height: 65px;
 	}
 }
 
 @media screen and (max-width: 600px) {
 	:root {
-		--item-card-width: 156px;
-		--items-per-row: 2;
-		--item-card-font-size: calc(var(--item-card-width) / 14);
+		--item-card-v-width: 156px;
+		--item-card-v-per-row: 2;
+		--item-card-v-font-size: calc(var(--item-card-v-width) / 14);
+		--item-card-h-height: 60px;
+		--item-card-h-font-size: calc(var(--item-card-h-height) / 14);
 	}
 }
 
 @media screen and (max-width: 380px) {
 	:root {
-		--item-card-width: 146px;
-		--items-per-row: 2;
-		--card-padding: calc(var(--card-border-radius) / 1.2);
+		--item-card-v-width: 146px;
+		--item-card-v-per-row: 2;
+		--item-card-v-padding: calc(var(--item-card-v-border-radius) / 1.2);
+		--item-card-h-height: 55px;
+		--item-card-h-padding: calc(var(--item-card-h-border-radius) / 1.2);
 	}
 }

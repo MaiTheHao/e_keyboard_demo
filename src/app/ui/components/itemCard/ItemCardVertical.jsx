@@ -1,19 +1,17 @@
+'use client'
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { object } from "prop-types";
 import Image from "next/image";
 import styles from "./ItemCard.module.scss";
 import LinkBtn from "../button/LinkBtn";
 import { faEye, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import NullImage from "./NullImage";
-import Product, { validateProduct } from "@/models/product";
 
-function ItemCard({ product }) {
-	if (!validateProduct(product)) return null;
-
-	const itemHref = `/product/${product.getId()}`;
+function ItemCardVertical({ product }) {
+	const itemHref = `/product/${product.id}`;
 	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
-		<div className={`${styles.container} card`}>
+		<div className={`${styles.container} ${styles.ItemCardVertical} card`}>
 			<div className={styles.image}>
 				{product.src ? <Image src={product.src} alt={`Ảnh sản phẩm: ${product.name}`} fill /> : <NullImage />}
 				<div className={styles.popupHoverContainer}>
@@ -35,8 +33,8 @@ function ItemCard({ product }) {
 	);
 }
 
-ItemCard.propTypes = {
-	product: PropTypes.instanceOf(Product).isRequired,
+ItemCardVertical.propTypes = {
+	product: PropTypes.object.isRequired,
 };
 
-export default ItemCard;
+export default ItemCardVertical;

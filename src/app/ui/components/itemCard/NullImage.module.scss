@@ -1,0 +1,23 @@
+.nullImage {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	background-color: rgb(245, 245, 245);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1ch;
+
+	svg {
+		position: relative !important;
+		width: 30% !important;
+		height: 30% !important;
+	}
+
+	span {
+		font-size: 0.8em;
+		font-weight: 600;
+		color: var(--third-text);
+	}
+}
