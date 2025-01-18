@@ -1,4 +1,3 @@
-import { getProductById } from "@/models/product";
 import React from "react";
 import styles from "./Product.module.scss";
 import Image from "next/image";
@@ -6,6 +5,16 @@ import NullImage from "@/app/ui/components/itemCard/NullImage";
 import LinkBtn from "@/app/ui/components/button/LinkBtn";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, upperFirst } from "@/utils/text";
+import { getProductById } from "@/lib/fetchProduct";
+
+export async function generateMetadata({ params }) {
+	const { id } = params;
+	const product = await getProductById(id);
+	return {
+		title: upperFirst(product?.name) || 'Product Not Found',
+		description: product?.description || 'Product details page'
+	};
+}
 
 const ProductSpecs = ({ label, value, colorVar = null }) => (
 	<>

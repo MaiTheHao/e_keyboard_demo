@@ -81,5 +81,18 @@ $max-items-to-show: 4;
 				margin-bottom: calc(var(--item-card-h-height) * ($max-items-to-show - 1));
 			}
 		}
+
+		.noResults{
+			width: 100%;
+			height: max-content;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 2ch 0;
+
+			color: var(--third-text);
+			font-size: 0.8em;
+		}
 	}
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./ItemGrid.module.scss";
-import { getAllProducts, serializeProduct } from "@/models/product";
+import { serializeProduct } from "@/models/product";
 import ItemCard from "../../itemCard/ItemCardVertical";
+import { getAllProducts } from "@/lib/fetchProduct";
 
 async function ItemGrid() {
 	const products = await getAllProducts();

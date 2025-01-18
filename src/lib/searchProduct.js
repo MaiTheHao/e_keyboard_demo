@@ -1,7 +1,8 @@
 'use server'
 
 import normalize from "@/utils/normalize";
-const { getProductsByQuery, serializeProducts } = require("@/models/product");
+import { getProductsByQuery } from "./fetchProduct";
+const { serializeProducts } = require("@/models/product");
 
 export async function searchByName(name, limit = 5) {
     name = normalize(name);
