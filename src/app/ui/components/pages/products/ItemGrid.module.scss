@@ -4,10 +4,6 @@
 	justify-content: center;
 	grid-template-columns: repeat(var(--item-card-v-per-row), var(--item-card-v-width));
 	gap: var(--item-card-v-gap);
-
-	/* &:has(:hover)>div[class~="card"]:not(:hover){
-        opacity: 0.5;
-    } */
 }
 
 @keyframes pulse {
