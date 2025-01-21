@@ -1,15 +1,18 @@
 import React from "react";
 import styles from "./Products.module.scss";
 import ProductsTop from "@/app/ui/components/pages/products/Top/ProductsTop";
+import ProductsContextProvider from "@/contexts/products/ProductsContextProvider";
 
 function layout({ children }) {
 	return (
-		<div className={styles.container}>
-			<ProductsTop/>
-			<div className={styles.body}>
-				{children}
+		<ProductsContextProvider>
+			<div className={styles.container}>
+				<ProductsTop/>
+				<div className={styles.body}>
+					{children}
+				</div>
 			</div>
-		</div>
+		</ProductsContextProvider>
 	);
 }
 

@@ -82,7 +82,7 @@ $max-items-to-show: 4;
 			}
 		}
 
-		.noResults{
+		.noResults {
 			width: 100%;
 			height: max-content;
 
@@ -93,6 +93,287 @@ $max-items-to-show: 4;
 
 			color: var(--third-text);
 			font-size: 0.8em;
+		}
+	}
+}
+
+.filterContainer {
+	display: flex;
+	align-items: center;
+	gap: 1ch;
+
+	.filterInput {
+		padding: 0.5em;
+		border: 0.1em solid var(--primary-border);
+		border-radius: 0.5em;
+		outline: none;
+		transition: border-color 0.2s ease-in-out;
+
+		&:focus {
+			border-color: var(--secondary-border);
+		}
+	}
+
+	.filterDropdown {
+		position: relative;
+		display: inline-block;
+
+		.dropdownContent {
+			display: none;
+			position: absolute;
+			background-color: var(--primary-text);
+			min-width: 160px;
+			box-shadow: var(--primary-box-shadow);
+			z-index: 1;
+
+			.dropdownItem {
+				color: var(--secondary-text);
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+
+				&:hover {
+					background-color: var(--secondary-background);
+				}
+			}
+		}
+
+		&:hover .dropdownContent {
+			display: block;
+		}
+	}
+}
+
+.filterTableWrapper {
+	margin-top: 1em;
+	background-color: var(--primary-background);
+	padding: 1em;
+	border-radius: 0.5em;
+	box-shadow: var(--primary-box-shadow);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		padding: 0.5em;
+	}
+
+	@media (max-width: 480px) {
+		padding: 0.2em;
+		margin: 0;
+		border-radius: 0;
+		box-shadow: 0;
+	}
+
+	.filterTableContent {
+		width: 80%;
+		max-width: 1200px;
+		height: 80%;
+		position: relative;
+
+		background-color: white;
+		padding: 2em;
+		border-radius: 0.5em;
+		box-shadow: var(--primary-box-shadow);
+		display: flex;
+		flex-direction: column;
+
+		.filterTableContentTop{
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			padding-bottom: 1em;
+
+			.closeButton{
+				width: max-content;
+				height: max-content;
+				padding: 0.5em 1em;
+				border-radius: 0.2em;
+				cursor: pointer;
+				background-color: white;
+				color: var(--third-text);
+				border: .1em solid var(--primary-border);
+				transition: all 0.2s ease-in-out;
+
+				&:hover{
+					background-color: var(--error);
+					color: var(--primary-text);
+				}
+			}
+		}
+		
+		.filterTableContentBottom{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 1em;
+		}
+
+		.filterFields {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			padding-right: 1em;
+			border-right: 0.1em solid var(--primary-border);
+
+			.filterField {
+				width: max-content;
+				height: max-content;
+				color: var(--third-text);
+				font-size: 1.2em;
+				cursor: pointer;
+
+				&.activeField {
+					font-weight: bold;
+					color: var(--secondary-text);
+				}
+			}
+		}
+
+		.filterOptionsContainer{
+			flex: 2;
+			position: relative;
+			height: 100%;
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			padding-left: 1em;
+
+			.filterOptions {
+				position: relative;
+				height: max-content;
+				
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+				flex-wrap: wrap;
+				gap: 1em;
+				color: var(--third-text);
+
+				.filterOption {
+					width: max-content;
+					height: max-content;
+					padding: 0.5em 1em;
+					border: 0.1em solid var(--primary-border);
+					border-radius: 0.5em;
+					cursor: pointer;
+					background-color: white;
+					color: var(--third-text);
+
+					&.selectedOption {
+						background-color: var(--info);
+						color: var(--primary-text);
+					}
+				}
+			}
+
+			.filterButtons{
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 1em;
+
+				button{
+					min-width: 120px;
+					padding: 0.5em 1em;
+					border-radius: 0.5em;
+					cursor: pointer;
+					background-color: white;
+					color: var(--third-text);
+					transition: all 0.2s ease-in-out;
+					text-wrap: nowrap;
+
+					&:hover{
+						background-color: var(--secondary-bg);
+						color: var(--primary-text);
+					}
+
+					&.clearButton{
+						flex: 1;
+						background-color: transparent;
+						color: var(--error);
+						border: 0.1em solid var(--error);
+					}
+
+					&.submitButton{
+						flex: 1;
+						background-color: var(--info);
+						color: var(--primary-text);
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		.filterTableContent {
+			width: 90%;
+			height: 90%;
+			padding: 1em;
+
+			.filterOptions {
+				gap: 0.5em;
+			}
+
+			.filterButtons {
+				gap: 0.5em;
+
+				button {
+					min-width: 100px;
+					padding: 0.3em 0.5em;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		.filterTableContent {
+			width: 100%;
+			height: 100%;
+			padding: 0.5em;
+			flex-direction: column;
+
+			.filterFields {
+				flex: 0;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 1ch;
+				padding-right: 0;
+				border-right: none;
+				border-bottom: 0.2em solid var(--primary-border);
+				padding-bottom: 1em;
+
+				.filterField {
+					font-size: 1em;
+					border: 0.1em solid var(--primary-border);
+					border-radius: 0.5em;
+					padding: 0.5em 1em;
+				}
+			}
+
+			.filterOptionsContainer {
+				padding-left: 0;
+				padding-top: 1em;
+			}
+
+			.filterOption {
+				padding: 0.3em 0.5em;
+			}
 		}
 	}
 }

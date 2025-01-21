@@ -11,8 +11,8 @@ export async function generateMetadata({ params }) {
 	const { id } = await params;
 	const product = await getProductById(id);
 	return {
-		title: upperFirst(product?.name) || 'Không tìm thấy sản phẩm',
-		description: product?.description || 'Trang miêu tả sản phẩm cụ thê'
+		title: upperFirst(product?.name) || "Không tìm thấy sản phẩm",
+		description: product?.description || "Trang miêu tả sản phẩm cụ thê",
 	};
 }
 
