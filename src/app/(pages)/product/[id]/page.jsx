@@ -8,11 +8,11 @@ import { capitalize, upperFirst } from "@/utils/text";
 import { getProductById } from "@/lib/fetchProduct";
 
 export async function generateMetadata({ params }) {
-	const { id } = params;
+	const { id } = await params;
 	const product = await getProductById(id);
 	return {
-		title: upperFirst(product?.name) || 'Product Not Found',
-		description: product?.description || 'Product details page'
+		title: upperFirst(product?.name) || 'Không tìm thấy sản phẩm',
+		description: product?.description || 'Trang miêu tả sản phẩm cụ thê'
 	};
 }
 

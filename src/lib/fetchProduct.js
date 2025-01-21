@@ -1,7 +1,7 @@
 'use server';
 import { productsCollection } from "@/configs/mongoDBConfig";
 import { ObjectId } from "mongodb";
-import { validateProduct, convertToProduct, convertToProducts } from "@/models/product";
+import { validateProduct, serializeProducts, serializeProduct } from "@/models/product";
 
 // CREATE
 export async function createProduct(product) {
@@ -12,24 +12,26 @@ export async function createProduct(product) {
 }
 
 // READ
-export async function getAllProducts(limit = 0) {
-	const products = await productsCollection.find({}).limit(limit).toArray();
-	return convertToProducts(products);
+export async function getAllProducts(limit = 0, skip = 0) {
+	const products = await productsCollection.find({}).skip(skip).limit(limit).toArray();
+	const response = serializeProducts(products)
+	return response;
 }
 
 export async function getProductById(id) {
 	const product = await productsCollection.findOne({ _id: new ObjectId(id) });
-	return product ? convertToProduct(product) : null;
+	return product ? serializeProduct(product) : null;
 }
 
-export async function getProductsByQuery(query = {}, limit = 15, sort = { _id: -1 }) {
-	const products = await productsCollection.find(query).limit(limit).sort(sort).toArray();
-	return products ? convertToProducts(products) : null;
+export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort = { _id: -1 }) {
+	const sanitizedQuery = Object.keys(query).length === 0 ? {} : query;
+	const products = await productsCollection.find(sanitizedQuery).skip(skip).limit(limit).sort(sort).toArray();
+	return products ? serializeProducts(products) : null;
 }
 
 export async function getProductByQuery(query = {}) {
 	const product = await productsCollection.findOne(query);
-	return product ? convertToProduct(product) : null;
+	return product ? serializeProduct(product) : null;
 }
 
 // UPDATE

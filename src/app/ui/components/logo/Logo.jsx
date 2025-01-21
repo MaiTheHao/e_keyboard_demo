@@ -5,11 +5,11 @@ import { WEB_ICON, WEB_NAME } from "@/app/constants";
 
 function Logo() {
 	return (
-		<div className={styles.container}>
-			<span className={styles.main}>
+		<div className={`${styles.container} web-logo`}>
+			<div className={`${styles.main} web-logo__block`}>
                 <FontAwesomeIcon icon = {WEB_ICON}/>
-                {WEB_NAME}
-            </span>
+                <span>{WEB_NAME}</span>
+            </div>
 		</div>
 	);
 }

@@ -2,9 +2,8 @@
 
 import normalize from "@/utils/normalize";
 import { getProductsByQuery } from "./fetchProduct";
-const { serializeProducts } = require("@/models/product");
 
-export async function searchByName(name, limit = 5) {
+export async function searchByTerm(name, limit = 5, skip = 0) {
     name = normalize(name);
     const searchTerms = name.split(/\s+/).filter(term => term.length > 0);
     const searchFields = [
@@ -20,6 +19,6 @@ export async function searchByName(name, limit = 5) {
         }))
     };
 
-    const products = await getProductsByQuery(query, limit);
-    return serializeProducts(products);
+    const response = await getProductsByQuery(query, limit, skip);
+    return response;
 }

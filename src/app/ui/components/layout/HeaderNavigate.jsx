@@ -47,7 +47,7 @@ function HeaderNavigate() {
 						})}
 					>
 						<FontAwesomeIcon icon={path.icon} />
-						{path.title}
+						<span>{path.title}</span>
 					</Link>
 				))}
 			</ul>

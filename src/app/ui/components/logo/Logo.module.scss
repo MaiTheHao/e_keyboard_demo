@@ -1,6 +1,6 @@
 .container {
 	width: max-content;
-	height: max-content;
+	height: 100%;
 	font-size: 1em;
 }
 
@@ -14,7 +14,6 @@
 	border-radius: 0.25em;
 
 	color: var(--primary-text);
-	letter-spacing: 0.5ch;
 	font-weight: 500;
 
 	padding: 0.5em 1em;

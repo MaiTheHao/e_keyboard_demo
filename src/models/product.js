@@ -43,7 +43,7 @@ export default class Product {
 		stock = 0,
 		description = null,
 	} = {}) {
-		this.id = normalize(_id);
+		this.id = normalize(_id?.toString());
 		this.name = normalize(name);
 		this.category = normalize(category);
 		this.brand = normalize(brand);
@@ -126,38 +126,22 @@ export function validateProduct(product) {
 }
 
 // Chuyển đổi dữ liệu giữa Product và Object JSON
-export function serializeProduct(product) {
-	if (!product || !(product instanceof Product)) return null;
+export function serializeProduct(input) {
+	if (!input) return null;
+	if (input._doc) {
+		input = { ...input._doc, _id: input._id.toString() };
+	}
+	const product = input instanceof Product ? input : new Product(input);
+	if (!validateProduct(product)) {
+		throw new Error('Không thể chuyển đổi sang plain text ở hàm serializeProduct');
+	}
 	return {
-		...product.getData(),
-		id: product.getId()
+		id: product.getId(),
+		...product.getData()
 	};
 }
 
 export function serializeProducts(products) {
 	if (!Array.isArray(products)) return [];
-	return products.map(product => serializeProduct(product));
+	return products.map((product) => serializeProduct(product)).filter(Boolean);
 }
-
-// Product Schema Example
-/*
-{
-	_id: ObjectId('6786515b0fd9afe1b707ccef'),
-	name: 'Keychron K2',
-	category: 'Keyboard',
-	brand: 'Keychron',
-	layout: '75%',
-	caseMaterial: 'Aluminum',
-	collabTheme: null,
-	rgbBacklit: true,
-	hotswap: true,
-	switchType: 'Mechanical Switch',
-	rappodTrigger: false,
-	tags: [ 'Keyboard', 'RGB Backlit', 'Hotswap' ],
-	price: 89.99,
-	currency: 'USD',
-	model: 'K2',
-	series: 'K',
-	stock: 100
-}
-*/
