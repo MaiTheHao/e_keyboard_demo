@@ -99,37 +99,85 @@ $max-items-to-show: 4;
 
 .filterContainer {
 	width: 100%;
-	.filterBar{
+	.filterBar {
 		width: 100%;
-		
+
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 1ch;
 
-		&__button{
-			color: var(--secondary-text);
-			border: 0.1ch solid var(--secondary-text);
-			border-radius: 0.25em;
-			padding: 0.5em 1em;
-			transition: all 0.2s ease-in-out;
+		&__element {
+			position: relative;
+			&__button {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1ch;
 
-			&:hover{
-				cursor: pointer;
-				background-color: var(--secondary-text);
-				color: white;
+				background-color: transparent;
+				color: var(--secondary-text);
+				border: 0.1ch solid var(--secondary-text);
+				border-radius: 0.25em;
+				padding: 0.5em 1em;
+				transition: all 0.2s ease-in-out;
+
+				&:hover {
+					cursor: pointer;
+					background-color: var(--secondary-text);
+					color: white;
+				}
+			}
+
+			&__wrapper {
+				position: absolute;
+				width: max-content;
+				top: 150%;
+				left: 0;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 1ch;
+
+				background-color: var(--primary-text);
+				border: 0.1ch solid var(--primary-border);
+				border-radius: 0.25em;
+				padding: 0.5em 1em;
+
+				li {
+					width: 100%;
+					cursor: pointer;
+					background-color: transparent;
+					padding: 0.5em 1em;
+					border-radius: 0.25em;
+
+					&:hover > button {
+						color: var(--secondary-text);
+					}
+
+					button {
+						cursor: pointer;
+						background-color: transparent;
+						transition: all 0.2s ease-in-out;
+						color: var(--third-text);
+
+						&.selected {
+							color: var(--secondary-text);
+							font-weight: bold;
+						}
+					}
+				}
 			}
 		}
 
-		.filterPrimaryButton{
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 1ch;
+		.filterPrimaryButton {
 		}
 	}
-	
+
 	.filterWrapperContainer {
 		display: flex;
 		&:not(.visible) {

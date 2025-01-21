@@ -25,7 +25,35 @@ export async function getProductById(id) {
 
 export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort = { _id: -1 }) {
 	const sanitizedQuery = Object.keys(query).length === 0 ? {} : query;
-	const products = await productsCollection.find(sanitizedQuery).skip(skip).limit(limit).sort(sort).toArray();
+	let products;
+
+	if (sort?.customOrder) {
+		const sortOrder = {
+			$addFields: {
+				sortOrder: {
+					$switch: {
+						branches: Object.entries(sort.customOrder).map(([key, value]) => ({
+							case: { $eq: [{ $toLower: `$${sort.field}` }, key.toLowerCase()] },
+							then: value,
+						})),
+						default: 99,
+					},
+				},
+			},
+		};
+
+		products = await productsCollection.aggregate([
+			{ $match: sanitizedQuery },
+			sortOrder,
+			{ $sort: { sortOrder: 1 } },
+			{ $skip: skip },
+			{ $limit: limit },
+			{ $project: { sortOrder: 0 } },
+		]).toArray();
+	} else {
+		products = await productsCollection.find(sanitizedQuery).skip(skip).limit(limit).sort(sort).toArray();
+	}
+
 	return products ? serializeProducts(products) : null;
 }
 

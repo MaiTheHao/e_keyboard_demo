@@ -7,6 +7,7 @@ import { inferFilterDataTypes } from "@/utils/filter";
 export default function ProductsContextProvider({ children }) {
     const initialFilters = inferFilterDataTypes(FILTER_FIELDS_OPTIONS);
     const [filter, setFilter] = useState(initialFilters);
+    const [sort, setSort] = useState(null);
 
     const handleSetFilter = (setup) => {
         const updatedSetup = { ...setup };
@@ -18,6 +19,8 @@ export default function ProductsContextProvider({ children }) {
         filter,
 		initialFilters,
         handleSetFilter,
+        sort,
+        setSort,
     };
 
     return <ProductsContext.Provider value={values}>{children}</ProductsContext.Provider>;
