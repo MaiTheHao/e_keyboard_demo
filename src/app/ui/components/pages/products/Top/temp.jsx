@@ -1,11 +1,12 @@
 "use client";
-import { faFilter, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useProductsContext from "@/contexts/products/useProductsContext";
 import styles from "./ProductsTop.module.scss";
 import { useState, useEffect } from "react";
 import { upperFirst } from "@/utils/text";
 import clsx from "clsx";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const FilterFields = ({ filters, selectedField, setSelectedField }) => (
 	<div className={styles.filterFields}>
@@ -21,21 +22,19 @@ const FilterFields = ({ filters, selectedField, setSelectedField }) => (
 	</div>
 );
 
-const BOOLEAN_OPTIONS = [
-	{ value: null, label: "All" },
-	{ value: true, label: "Yes" },
-	{ value: false, label: "No" },
-];
-
-const BooleanOptions = ({ selectedField, filters, handleFilterChange }) => (
+const BooleanOptions = ({ selectedField, filter, handleSetFilter }) => (
 	<div className={styles.filterOptions}>
-		{BOOLEAN_OPTIONS.map(({ value, label }) => (
+		{[
+			{ value: null, label: "All" },
+			{ value: true, label: "Yes" },
+			{ value: false, label: "No" },
+		].map(({ value, label }) => (
 			<div
 				key={label}
 				className={clsx(styles.filterOption, {
-					[styles.selectedOption]: filters[selectedField] === value,
+					[styles.selectedOption]: filter[selectedField] === value,
 				})}
-				onClick={() => handleFilterChange(selectedField, value)}
+				onClick={() => handleSetFilter({ [selectedField]: value })}
 			>
 				{label}
 			</div>
@@ -57,33 +56,48 @@ const FilterOptions = ({ selectedField, filters, filterFieldsOptions, handleFilt
 	));
 
 function ProductsTopFilter() {
-	const { filter, initialFilters, filterFieldsOptions, handleSetFilter } = useProductsContext();
-	const [filters, setFilters] = useState(filter);
+	const [filters, setFilters] = useState({
+		brand: [],
+		layout: [],
+		caseMaterial: [],
+		collabTheme: [],
+		rgbBacklit: null,
+		hotswap: null,
+		switchType: [],
+		rappodTrigger: null,
+		tag: [],
+	});
 	const [selectedField, setSelectedField] = useState("brand");
 	const [showFilterTable, setShowFilterTable] = useState(false);
+	const { filter, filterFieldsOptions, handleSetFilter } = useProductsContext();
 
 	const handleFilterChange = (field, value) => {
 		setFilters((prevFilters) => {
-			if (typeof value === "boolean" || value === null) {
-				return { ...prevFilters, [field]: value };
-			}
 			const updatedField = prevFilters[field].includes(value)
 				? prevFilters[field].filter((item) => item !== value)
 				: [...prevFilters[field], value];
 			return { ...prevFilters, [field]: updatedField };
 		});
+
 	};
 
 	useEffect(() => {
-		handleSetFilter(initialFilters);
+		handleSetFilter({
+			brand: [],
+			layout: [],
+			caseMaterial: [],
+			collabTheme: [],
+			rgbBacklit: null,
+			hotswap: null,
+			switchType: [],
+			rappodTrigger: null,
+			tag: [],
+		});
 	}, []);
 
 	return (
 		<div className={styles.filterContainer}>
-			<div className={styles.filterButton} onClick={() => setShowFilterTable(!showFilterTable)}>
-				<FontAwesomeIcon icon={faFilter} />
-				<span>Bộ lọc</span>
-			</div>
+			<FontAwesomeIcon icon={faFilter} onClick={() => setShowFilterTable(!showFilterTable)} />
 			{showFilterTable && (
 				<div className={styles.filterTableWrapper}>
 					<div className={styles.filterTableContent}>
@@ -99,8 +113,8 @@ function ProductsTopFilter() {
 									{!Array.isArray(filters[selectedField]) ? (
 										<BooleanOptions
 											selectedField={selectedField}
-											filters={filters}
-											handleFilterChange={handleFilterChange}
+											filter={filter}
+											handleSetFilter={handleSetFilter}
 										/>
 									) : (
 										<FilterOptions
@@ -114,7 +128,17 @@ function ProductsTopFilter() {
 								<div className={styles.filterButtons}>
 									<button
 										onClick={() => {
-											setFilters(initialFilters);
+											setFilters({
+												brand: [],
+												layout: [],
+												caseMaterial: [],
+												collabTheme: [],
+												rgbBacklit: null,
+												hotswap: null,
+												switchType: [],
+												rappodTrigger: null,
+												tag: [],
+											});
 											handleSetFilter({});
 										}}
 										className={styles.clearButton}

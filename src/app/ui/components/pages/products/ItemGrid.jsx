@@ -21,7 +21,6 @@ function ItemGrid({ maxPerPage = 15 }) {
 			}, {}) : {};
 
 			const response = await getProductsByQuery(query, maxPerPage);
-			console.log(response);
 			setProducts(response);
 			setIsPending(false);
 		}
