@@ -60,19 +60,19 @@
 	margin-top: auto;
 }
 
+.detailsContent {
+	margin-top: 2em;
+	padding: 1em;
+	background-color: var(--secondary-border);
+	border-radius: 0.5em;
+	line-height: 1.6;
+	color: var(--secondary-text);
+}
+
 @media screen and (max-width: 1024px) {
 	.container {
 		gap: 1.5em;
 		padding: 1em;
-	}
-
-	.imageSection {
-		min-height: 300px;
-		flex: 0.8;
-	}
-
-	.detailsSection {
-		flex: 1.2;
 	}
 
 	.name {

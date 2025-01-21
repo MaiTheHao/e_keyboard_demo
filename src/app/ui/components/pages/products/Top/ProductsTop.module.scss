@@ -99,298 +99,235 @@ $max-items-to-show: 4;
 
 .filterContainer {
 	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	gap: 1ch;
-
-	.filterButton {
+	.filterBar{
+		width: 100%;
+		
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
-		gap: 0.5ch;
+		flex-wrap: wrap;
+		gap: 1ch;
 
-		padding: 0.5em 1em;
-		border-radius: 0.5em;
-		cursor: pointer;
-		background-color: white;
-		color: var(--third-text);
-		border: 0.1em solid var(--primary-border);
-		transition: all 0.2s ease-in-out;
+		&__button{
+			color: var(--secondary-text);
+			border: 0.1ch solid var(--secondary-text);
+			border-radius: 0.25em;
+			padding: 0.5em 1em;
+			transition: all 0.2s ease-in-out;
 
-		&:hover {
-			background-color: var(--info);
-			color: var(--primary-text);
-		}
-	}
-
-	.filterInput {
-		padding: 0.5em;
-		border: 0.1em solid var(--primary-border);
-		border-radius: 0.5em;
-		outline: none;
-		transition: border-color 0.2s ease-in-out;
-
-		&:focus {
-			border-color: var(--secondary-border);
-		}
-	}
-
-	.filterDropdown {
-		position: relative;
-		display: inline-block;
-
-		.dropdownContent {
-			display: none;
-			position: absolute;
-			background-color: var(--primary-text);
-			min-width: 160px;
-			box-shadow: var(--primary-box-shadow);
-			z-index: 1;
-
-			.dropdownItem {
-				color: var(--secondary-text);
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-
-				&:hover {
-					background-color: var(--secondary-background);
-				}
+			&:hover{
+				cursor: pointer;
+				background-color: var(--secondary-text);
+				color: white;
 			}
 		}
 
-		&:hover .dropdownContent {
-			display: block;
+		.filterPrimaryButton{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1ch;
 		}
 	}
-}
-
-.filterTableWrapper {
-	padding: 1em;
-	border-radius: 0.5em;
-	box-shadow: var(--primary-box-shadow);
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-	@media (max-width: 768px) {
-		padding: 0.5em;
-	}
-
-	@media (max-width: 480px) {
-		padding: 0.2em;
-		border-radius: 0;
-		box-shadow: 0;
-	}
-
-	.filterTableContent {
-		width: 80%;
-		max-width: 1200px;
-		height: 80%;
-		position: relative;
-
-		background-color: white;
-		padding: 2em;
-		border-radius: 0.5em;
-		box-shadow: var(--primary-box-shadow);
+	
+	.filterWrapperContainer {
 		display: flex;
-		flex-direction: column;
-
-		.filterTableContentTop {
-			width: 100%;
-			display: flex;
-			justify-content: flex-end;
-			padding-bottom: 1em;
-
-			.closeButton {
-				width: max-content;
-				height: max-content;
-				padding: 0.5em 1em;
-				border-radius: 0.2em;
-				cursor: pointer;
-				background-color: white;
-				color: var(--third-text);
-				border: 0.1em solid var(--primary-border);
-				transition: all 0.2s ease-in-out;
-
-				&:hover {
-					background-color: var(--error);
-					color: var(--primary-text);
-				}
-			}
+		&:not(.visible) {
+			display: none;
 		}
+		justify-content: center;
 
-		.filterTableContentBottom {
-			width: 100%;
-			height: 100%;
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 1em;
-		}
+		position: fixed;
+		inset: 0 0 0 0;
+		background-color: rgba(0, 0, 0, 0.5);
 
-		.filterFields {
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			gap: 1em;
-			padding-right: 1em;
-			border-right: 0.1em solid var(--primary-border);
-
-			.filterField {
-				width: max-content;
-				height: max-content;
-				color: var(--third-text);
-				font-size: 1.2em;
-				cursor: pointer;
-
-				&.activeField {
-					font-weight: bold;
-					color: var(--secondary-text);
-				}
-			}
-		}
-
-		.filterOptionsContainer {
-			flex: 2;
+		.filterWrapperContent {
 			position: relative;
-			height: 100%;
+			width: 80%;
+			max-width: 1000px;
+			height: max-content;
+			max-height: min(600px, 80vh);
+			margin-top: calc(var(--header-height) + 2ch);
 
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
-			align-items: flex-start;
-			flex-wrap: wrap;
-			padding-left: 1em;
+			align-items: center;
+			background-color: white;
+			padding: 1em;
+			border-radius: 0.5em;
 
-			.filterOptions {
-				position: relative;
-				height: max-content;
-
+			&__header {
+				width: 100%;
 				display: flex;
-				justify-content: flex-start;
-				align-items: flex-start;
-				flex-wrap: wrap;
-				gap: 1em;
-				color: var(--third-text);
+				justify-content: flex-end;
+				padding-bottom: 0.5em;
 
-				.filterOption {
-					width: max-content;
-					height: max-content;
-					padding: 0.5em 1em;
-					border: 0.1em solid var(--primary-border);
-					border-radius: 0.5em;
+				button {
 					cursor: pointer;
-					background-color: white;
+					background-color: transparent;
+					border: none;
+					font-size: 1em;
+					padding: 0.5em;
+					border: 0.05rem solid var(--primary-border);
+					border-radius: 0.25em;
 					color: var(--third-text);
 
-					&.selectedOption {
-						background-color: var(--info);
-						color: var(--primary-text);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 1ch;
+					transition: all 0.2s ease-in-out;
+
+					&:hover {
+						background-color: var(--error);
+						color: white;
+						border: 0.1ch solid var(--error);
 					}
 				}
 			}
 
-			.filterButtons {
+			&__list {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 2ch;
+				padding: 1em;
+
+				width: 100%;
+				height: max-content;
+				overflow-x: hidden;
+				overflow-y: auto;
+
+				&::-webkit-scrollbar {
+					width: 0.5ch;
+				}
+
+				&::-webkit-scrollbar-track {
+					background: var(--third-text);
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background: var(--secondary-text);
+					&:hover {
+						background: var(--secondary-text);
+					}
+				}
+
+				&__item {
+					width: 100%;
+					height: 20ch;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					gap: 1ch;
+
+					font-size: 0.9em;
+
+					&__label {
+						width: 100%;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						gap: 1ch;
+
+						background-color: var(--info);
+						color: var(--primary-text);
+						font-weight: 700;
+
+						padding: 0.5ch 0.5ch;
+					}
+
+					&__options {
+						width: 100%;
+						display: flex;
+						justify-content: flex-start;
+						align-items: flex-start;
+						flex-wrap: wrap;
+						gap: 0.75ch;
+
+						overflow-x: hidden;
+						overflow-y: auto;
+
+						&::-webkit-scrollbar {
+							width: 0.2ch;
+						}
+
+						&::-webkit-scrollbar-track {
+							background: rgb(0, 0, 0, 0.2);
+						}
+
+						&::-webkit-scrollbar-thumb {
+							background: var(--secondary-text);
+						}
+
+						button {
+							width: max-content;
+							padding: 0.5em 1em;
+
+							border: 0.05rem solid var(--primary-border);
+							border-radius: 0.25em;
+
+							background-color: transparent;
+							color: var(--third-text);
+							font-weight: 200;
+
+							cursor: pointer;
+
+							transition: all 0.2s ease-in-out;
+
+							&:hover {
+								color: var(--secondary-text);
+								border: 0.1ch solid var(--primary-border);
+							}
+
+							&.selected {
+								color: white;
+								background-color: var(--success);
+								border: 0.1ch solid var(--success);
+							}
+						}
+					}
+				}
+			}
+
+			&__buttons {
 				width: 100%;
 				display: flex;
 				justify-content: center;
-				align-items: center;
-				flex-wrap: wrap;
-				gap: 1em;
+				gap: 1ch;
+
+				padding-top: 0.5em;
+				border-top: 0.05rem solid var(--primary-border);
 
 				button {
-					min-width: 120px;
-					padding: 0.5em 1em;
-					border-radius: 0.5em;
 					cursor: pointer;
-					background-color: white;
-					color: var(--third-text);
+					background-color: transparent;
+					font-size: 1em;
+					padding: 0.5em;
+					border-radius: 0.25em;
 					transition: all 0.2s ease-in-out;
-					text-wrap: nowrap;
+				}
+
+				&__discard {
+					color: var(--error);
+					border: 0.05rem solid var(--error);
 
 					&:hover {
-						background-color: var(--secondary-bg);
-						color: var(--primary-text);
-					}
-
-					&.clearButton {
-						flex: 1;
-						background-color: transparent;
-						color: var(--error);
-						border: 0.1em solid var(--error);
-					}
-
-					&.submitButton {
-						flex: 1;
-						background-color: var(--info);
-						color: var(--primary-text);
+						background-color: var(--error);
+						color: white;
+						border: 0.1ch solid var(--error);
 					}
 				}
-			}
-		}
-	}
 
-	@media (max-width: 768px) {
-		.filterTableContent {
-			width: 90%;
-			height: 90%;
-			padding: 1em;
+				&__apply {
+					color: var(--success);
+					border: 0.05rem solid var(--success);
 
-			.filterOptions {
-				gap: 0.5em;
-			}
-
-			.filterButtons {
-				gap: 0.5em;
-
-				button {
-					min-width: 100px;
-					padding: 0.3em 0.5em;
+					&:hover {
+						background-color: var(--success);
+						color: white;
+						border: 0.1ch solid var(--success);
+					}
 				}
-			}
-		}
-	}
-
-	@media (max-width: 480px) {
-		.filterTableContent {
-			width: 100%;
-			height: 100%;
-			padding: 0.5em;
-			flex-direction: column;
-
-			.filterFields {
-				flex: 0;
-				flex-direction: row;
-				flex-wrap: wrap;
-				gap: 1ch;
-				padding-right: 0;
-				border-right: none;
-				border-bottom: 0.2em solid var(--primary-border);
-				padding-bottom: 1em;
-
-				.filterField {
-					font-size: 1em;
-					border: 0.1em solid var(--primary-border);
-					border-radius: 0.5em;
-					padding: 0.5em 1em;
-				}
-			}
-
-			.filterOptionsContainer {
-				padding-left: 0;
-				padding-top: 1em;
-			}
-
-			.filterOption {
-				padding: 0.3em 0.5em;
 			}
 		}
 	}
