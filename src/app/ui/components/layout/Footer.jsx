@@ -5,7 +5,7 @@ import Logo from "../logo/Logo";
 import Link from "next/link";
 import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CREATOR } from "@/app/constants";
+import { CREATOR } from "../../../../../constants";
 
 const contactConfigs = [
 	{

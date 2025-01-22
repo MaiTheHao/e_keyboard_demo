@@ -6,7 +6,7 @@ import LinkBtn from "@/app/ui/components/button/LinkBtn";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, upperFirst } from "@/utils/text";
 import { getProductById } from "@/lib/fetchProduct";
-import { PRODUCT_PAGE_METADATA } from "@/app/constants";
+import { PRODUCT_PAGE_METADATA } from "../../../../../constants";
 
 export async function generateMetadata({ params }) {
 	const { id } = await params;

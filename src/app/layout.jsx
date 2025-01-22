@@ -10,7 +10,7 @@ config.autoAddCss = false;
 // Components
 import Header from "./ui/components/layout/Header";
 import Footer from "./ui/components/layout/Footer";
-import { CREATOR, WEB_DESCRIPTION, WEB_NAME } from "./constants";
+import { CREATOR, WEB_DESCRIPTION, WEB_NAME } from "../../constants";
 
 export const metadata = {
 	title: WEB_NAME,

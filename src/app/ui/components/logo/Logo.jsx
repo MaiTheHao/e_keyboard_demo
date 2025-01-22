@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Logo.module.scss";
-import { WEB_ICON, WEB_NAME } from "@/app/constants";
+import { WEB_ICON, WEB_NAME } from "../../../../../constants";
 
 function Logo() {
 	return (

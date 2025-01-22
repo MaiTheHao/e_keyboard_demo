@@ -1,4 +1,4 @@
-import { PRODUCTS_PAGE_METADATA } from "@/app/constants";
+import { PRODUCTS_PAGE_METADATA } from "../../../../constants";
 import ItemGrid from "@/app/ui/components/pages/products/ItemGrid";
 import React from "react";
 

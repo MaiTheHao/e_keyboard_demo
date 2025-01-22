@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import React, { useState } from "react";
 
-import { FILTER_FIELDS_OPTIONS, SORT_OPTIONS } from "@/app/constants";
+import { FILTER_FIELDS_OPTIONS, SORT_OPTIONS } from "../../../../../../../constants";
 import useProductsContext from "@/contexts/products/useProductsContext";
 import { upperFirst } from "@/utils/text";
 import styles from "./ProductsTop.module.scss";

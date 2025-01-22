@@ -57,7 +57,7 @@
 	.details {
 		* {
 			height: 2ch;
-			animation: skeleton-backgroud 1s infinite ease-out;
+			animation: skeleton-background 1s infinite ease-out;
 		}
 
 		.name,
@@ -80,7 +80,7 @@
 	}
 	.image {
 		background-color: rgba(0, 0, 0, 20%); 
-		animation: skeleton-backgroud 1s infinite ease-out;
+		animation: skeleton-background 1s infinite ease-out;
 	}
 }
 
@@ -127,14 +127,14 @@
 	&.skeleton {
 		.image {
 			background-color: rgba(0, 0, 0, 20%); 
-			animation: skeleton-backgroud 1s infinite ease-out;
+			animation: skeleton-background 1s infinite ease-out;
 		}
 		.details {
 			.name,
 			.description,
 			.price {
 				background-color: rgba(0, 0, 0, 20%); 
-				animation: skeleton-backgroud 1s infinite ease-out;
+				animation: skeleton-background 1s infinite ease-out;
 			}
 		}
 	}
@@ -180,7 +180,7 @@
 	&.skeleton {
 		.image {
 			background-color: rgba(0, 0, 0, 20%); 
-			animation: skeleton-backgroud 1s infinite ease-out;
+			animation: skeleton-background 1s infinite ease-out;
 		}
 		.details {
 			width: 100%;
@@ -189,7 +189,7 @@
 			.description,
 			.price {
 				background-color: rgba(0, 0, 0, 20%); 
-				animation: skeleton-backgroud 1s infinite ease-out;
+				animation: skeleton-background 1s infinite ease-out;
 			}
 		}
 	}
