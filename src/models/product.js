@@ -134,7 +134,7 @@ export function serializeProduct(input) {
 	}
 	const product = input instanceof Product ? input : new Product(input);
 	if (!validateProduct(product)) {
-		throw new Error('Không thể chuyển đổi sang plain text ở hàm serializeProduct do cấu trúc dữ liệu không hợp lệ.');
+		console.error('Không thể chuyển đổi sang plain text ở hàm serializeProduct do cấu trúc dữ liệu không hợp lệ.');
 	}
 	return {
 		id: product.getId(),
