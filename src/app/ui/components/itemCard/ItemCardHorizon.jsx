@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
@@ -12,7 +12,17 @@ function ItemCardHorizon({ product }) {
 	return (
 		<Link href={itemHref} className={`${styles.container} ${styles.ItemCardHorizon} card`}>
 			<div className={styles.image}>
-				{product.src ? <Image src={product.src} alt={`Ảnh sản phẩm: ${product.name}`} fill /> : <NullImage />}
+				{product.src ? (
+					<Image
+						src={product.src}
+						alt={`Ảnh sản phẩm: ${product.name}`}
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						priority
+					/>
+				) : (
+					<NullImage />
+				)}
 			</div>
 			<div className={styles.details}>
 				<h1 className={styles.name}>{product.name}</h1>

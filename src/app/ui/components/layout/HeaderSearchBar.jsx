@@ -11,7 +11,7 @@ import ItemCardHorizon from "../itemCard/ItemCardHorizon";
 
 const FETCH_ACTION_DELAY = 250;
 const CACHE_LIMIT = 10;
-const SEARCH_LIMIT = 20;
+const SEARCH_LIMIT = 5;
 
 function HeaderSearchBar() {
 	const [searchState, setSearchState] = useState({

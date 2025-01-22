@@ -109,7 +109,8 @@ $max-items-to-show: 4;
 		align-items: flex-start;
 		justify-content: flex-start;
 		margin-top: 1ch;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
 		background-color: var(--primary-text);
 		box-shadow: var(--primary-box-shadow);
 
@@ -118,13 +119,14 @@ $max-items-to-show: 4;
 		}
 
 		&::-webkit-scrollbar-track {
-			background: var(--third-text);
+			background: var(--primary-text);
 		}
 
 		&::-webkit-scrollbar-thumb {
-			background: var(--secondary-text);
+			background: var(--third-text);
 
 			&:hover {
+				cursor: pointer;
 				background: var(--secondary-text);
 			}
 		}

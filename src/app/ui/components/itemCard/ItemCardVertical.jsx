@@ -13,7 +13,17 @@ function ItemCardVertical({ product }) {
 	return (
 		<div className={`${styles.container} ${styles.ItemCardVertical} card`}>
 			<div className={styles.image}>
-				{product.src ? <Image src={product.src} alt={`Ảnh sản phẩm: ${product.name}`} fill /> : <NullImage />}
+				{product.src ? (
+					<Image 
+						src={product.src} 
+						alt={`Ảnh sản phẩm: ${product.name}`} 
+						fill 
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+						priority
+					/>
+				) : (
+					<NullImage />
+				)}
 				<div className={styles.popupHoverContainer}>
 					<div className={styles.popupHoverBlock}>
 						<LinkBtn href={itemHref} text="Xem chi tiết" icon={faEye} />
