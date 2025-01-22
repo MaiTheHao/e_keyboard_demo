@@ -63,7 +63,7 @@ export const FILTER_FIELDS_OPTIONS = {
 		options: ["Keychron", "Ducky", "Varmilo", "Leopold", "Akko", "Vortex", "Anne Pro", "Filco"],
 	},
 	layout: {
-		title: "Layout", 
+		title: "Layout",
 		options: ["60%", "65%", "75%", "TKL", "Fullsize"],
 	},
 	caseMaterial: {
@@ -74,25 +74,27 @@ export const FILTER_FIELDS_OPTIONS = {
 		title: "Collaboration Theme",
 		options: ["Anime", "Game", "Movie", "Music", "Art"],
 	},
-	rgbBacklit: {
-		title: "RGB Backlight",
-		options: ["Yes", "No"],
-	},
-	hotswap: {
-		title: "Hot-swappable",
-		options: ["Yes", "No"],
-	},
+	rgbBacklit: { title: "RGB Backlight", options: ["Yes", "No"] },
+	hotswap: { title: "Hot-swappable", options: ["Yes", "No"] },
 	switchType: {
-		title: "Switch Type", 
+		title: "Switch Type",
 		options: ["Cherry MX", "Gateron", "Kailh", "Zealios", "Topre"],
 	},
-	rappodTrigger: {
-		title: "Rappod Trigger",
-		options: ["Yes", "No"],
-	},
-	tag: {
+	rappodTrigger: { title: "Rappod Trigger", options: ["Yes", "No"] },
+	tags: {
 		title: "Tags",
-		options: ["Custom", "Limited Edition", "Artisan", "Vintage", "Customizable"],
+		options: [
+			"Custom",
+			"Limited Edition",
+			"Artisan",
+			"Vintage",
+			"Customizable",
+			"Keyboard",
+			"RGB Backlit",
+			"Hotswap",
+			"Rappid Trigger",
+			"Multi-Mode",
+		],
 	},
 };
 
@@ -107,13 +109,13 @@ export const SORT_OPTIONS = [
 		mongoSort: { price: 1 },
 	},
 	{
-		value: "-price", 
+		value: "-price",
 		label: "Giá: Cao đến Thấp",
 		mongoSort: { price: -1 },
 	},
 	{
 		value: "name",
-		label: "Tên: A đến Z", 
+		label: "Tên: A đến Z",
 		mongoSort: { name: 1 },
 	},
 	{
@@ -126,8 +128,8 @@ export const SORT_OPTIONS = [
 		label: "Layout bàn phím",
 		field: "layout",
 		customOrder: {
-			"Fullsize": 1,
-			"TKL": 2,
+			Fullsize: 1,
+			TKL: 2,
 			"75%": 3,
 			"65%": 4,
 			"60%": 5,
@@ -136,13 +138,13 @@ export const SORT_OPTIONS = [
 	{
 		value: "caseMaterial",
 		label: "Chất liệu vỏ",
-		field: "caseMaterial", 
+		field: "caseMaterial",
 		customOrder: {
-			"Aluminum": 1,
-			"Plastic": 2,
-			"Wood": 3,
-			"Metal": 4,
-			"Acrylic": 5,
+			Aluminum: 1,
+			Plastic: 2,
+			Wood: 3,
+			Metal: 4,
+			Acrylic: 5,
 		},
 	},
 ];

@@ -14,6 +14,8 @@ export default function ProductsContextProvider({ children }) {
         setFilter((prevFilter) => ({ ...prevFilter, ...updatedSetup }));
     };
 
+    console.log(filter.tags);
+
     const values = {
         filterFieldsOptions: FILTER_FIELDS_OPTIONS,
         filter,

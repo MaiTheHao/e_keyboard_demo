@@ -42,6 +42,7 @@ export default class Product {
 		model = "",
 		series = "",
 		stock = 0,
+		src = null,
 		description = null,
 	} = {}) {
 		this.id = normalize(_id?.toString());
@@ -61,6 +62,7 @@ export default class Product {
 		this.model = model;
 		this.series = series;
 		this.stock = Number(stock) || 0;
+		this.src = src;
 		this.description = description?.trim() || null;
 		this.initSpecialFields();
 	}
@@ -123,6 +125,7 @@ export function validateProduct(product) {
 	if (!product.model || typeof product.model !== "string") return false;
 	if (!product.series || typeof product.series !== "string") return false;
 	if (typeof product.stock !== "number") return false;
+	if (product.src !== null && typeof product.src !== "string") return false;
 	return true;
 }
 
