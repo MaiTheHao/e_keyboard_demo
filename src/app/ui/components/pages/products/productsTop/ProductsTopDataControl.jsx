@@ -55,7 +55,7 @@ function FieldComponent({ title, field, thisFilter, handleSetThisFilter }) {
 	);
 }
 
-function ProductsTopFilter() {
+function ProductsTopDataControl() {
 	const { filter, handleSetFilter, initialFilters, sort, setSort } = useProductsContext();
 	const [thisFilter, setThisFilter] = useState(initialFilters);
 	const [wrapperVisible, setWrapperVisible] = useState({
@@ -183,4 +183,4 @@ function ProductsTopFilter() {
 	);
 }
 
-export default ProductsTopFilter;
+export default ProductsTopDataControl;

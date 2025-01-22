@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Products.module.scss";
-import ProductsTop from "@/app/ui/components/pages/products/Top/ProductsTop";
+import ProductsTop from "@/app/ui/components/pages/products/productsTop/ProductsTop";
 import ProductsContextProvider from "@/contexts/products/ProductsContextProvider";
 
 function layout({ children }) {
