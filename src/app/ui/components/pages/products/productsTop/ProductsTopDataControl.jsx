@@ -92,7 +92,7 @@ function ProductsTopDataControl() {
 			setSort(null);
 			return;
 		}
-		
+
 		setSort(options);
 		setWrapperVisible({ ...wrapperVisible, sortButton: false });
 	};
