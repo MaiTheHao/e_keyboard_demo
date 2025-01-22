@@ -32,6 +32,9 @@ importers:
       mongodb:
         specifier: ^6.12.0
         version: 6.12.0
+      mongodb-connection-string-url:
+        specifier: 3.0.2
+        version: 3.0.2
       mongodb-uri:
         specifier: 0.9.7
         version: 0.9.7
