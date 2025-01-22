@@ -1,4 +1,5 @@
 import normalize from "@/utils/normalize";
+import { upperFirst } from "@/utils/text";
 
 /**
  * Đại diện cho một sản phẩm bàn phím trong hệ thống

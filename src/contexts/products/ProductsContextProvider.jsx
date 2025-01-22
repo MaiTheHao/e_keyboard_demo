@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import ProductsContext from "./ProductsContext";
-import { FILTER_FIELDS_OPTIONS } from "@/app/setting";
+import { FILTER_FIELDS_OPTIONS } from "@/app/constants";
 import { inferFilterDataTypes } from "@/utils/filter";
 
 export default function ProductsContextProvider({ children }) {
