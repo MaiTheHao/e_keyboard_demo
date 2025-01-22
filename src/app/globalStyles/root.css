@@ -1,8 +1,8 @@
 :root {
 	/* COLOR */
-	--primary-bg: #295F98;
+	--primary-bg: #789DBC;
 	--primary-bg-hover: #1e4a75;
-	--secondary-bg: #789DBC;
+	--secondary-bg: rgb(145, 183, 214);
 	--secondary-bg-hover: #6e8aa3;
 	--gray-bg: rgb(0, 0, 0, 5%);
 	--primary-text: white;
