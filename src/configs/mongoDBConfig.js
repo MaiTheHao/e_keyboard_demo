@@ -45,7 +45,7 @@ clientPromise.then(() => {
     console.log(`Bộ sưu tập: ${[DATABASE_PRODUCTS_COLLECTION, DATABASE_USERS_COLLECTION].join(', ')}`);
     console.log("_________________________________________________________________________________________\n");
 }).catch(err => {
-    console.error('Kết nối tới MongoDB thất bại:', err);
+    console.log('Kết nối tới MongoDB thất bại:', err);
 });
 
 // Chọn database và collections
