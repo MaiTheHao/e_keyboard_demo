@@ -87,23 +87,3 @@ export const SORT_OPTIONS = [
 		},
 	},
 ];
-
-// db.products.aggregate([
-//     {
-//       $addFields: {
-//         sortOrder: {
-//           $switch: {
-//             branches: [
-//               { case: { $eq: ["$special", "Hào"] }, then: 1 },
-//               { case: { $eq: ["$special", "Ba"] }, then: 2 },
-//               { case: { $eq: ["$special", "Tỷ"] }, then: 3 },
-//               { case: { $eq: ["$special", "Huỳnh"] }, then: 4 }
-//             ],
-//             default: 99 // Giá trị mặc định nếu không khớp
-//           }
-//         }
-//       }
-//     },
-//     { $sort: { sortOrder: 1 } },
-//     { $project: { sortOrder: 0 } } // Loại bỏ field tạm nếu không cần thiết
-//   ]);
