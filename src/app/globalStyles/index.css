@@ -1,5 +1,5 @@
-@import url(./reset.css);
-@import url(./root.css);
+@import url("./reset.css");
+@import url("./root.css");
 
 * {
 	font-size: 1em;
@@ -11,7 +11,6 @@
 	position: relative;
 	width: 100vw;
 	height: max-content;
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -32,9 +31,7 @@
 .top-body {
 	width: 100%;
 	min-height: 100vh;
-
 	margin-bottom: 3ch;
-
 	z-index: var(--z-index-body);
 }
 
@@ -42,7 +39,7 @@
 	display: none !important;  
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
 	.top-container {
 		padding: 8px;
 	}

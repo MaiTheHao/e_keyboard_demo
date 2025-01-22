@@ -7,50 +7,38 @@
 	--primary-text: white;
 	--secondary-text: #333;
 	--third-text: #999;
-	--primary-border: rgb(229, 225, 218);
-	--secondary-border: rgb(241, 240, 232);
-
+	--primary-border: rgb(229 225 218);
+	--secondary-border: rgb(241 240 232);
 	--success: #6fae8a;
 	--error: #e05c5c;
 	--warning: #ffcc80;
 	--info: #80bfff;
-
 	--facebook: #17a9fd;
 	--instagram: #f5a844;
-	--youtube: #ff0000;
-
+	--youtube: #f00;
 	/* SIZE */
 	--header-height: 84px;
-
 	/* INDEX */
 	--z-index-body: 200;
 	--z-index-header: 400;
 	--z-index-dropdown: 500;
-
-	/* ITEM CARD VERTICAL*/
+	/* ITEM CARD VERTICAL */
 	--item-card-v-width: 200px;
 	--item-card-v-font-size: calc(var(--item-card-v-width) / 16);
-	
 	--item-card-v-aspect-ratio: 2 / 3;
 	--item-card-v-per-row: 5;
 	--item-card-v-gap: 1ch;
-
 	--item-card-v-border-radius: calc(var(--item-card-v-width) / 40);
 	--item-card-v-padding: calc(var(--item-card-v-border-radius) / 0.8);
-
 	--item-card-v-inner-border-radius: calc(var(--item-card-v-border-radius) - var(--item-card-v-padding) / 2);
-
 	/* ITEM CARD HORIZON */
 	--item-card-h-height: 80px;
 	--item-card-h-font-size: calc(var(--item-card-h-height) / 16);
-
 	--item-card-h-border-radius: calc(var(--item-card-h-height) / 20);
 	--item-card-h-padding: calc(var(--item-card-h-border-radius) / 0.8);
-
 	--item-card-h-inner-border-radius: calc(var(--item-card-h-border-radius) - var(--item-card-h-padding) / 2);
-
 	/* OTHERS */
-	--primary-box-shadow: 0 0 .4ch rgba(0, 0, 0, 0.2);
+	--primary-box-shadow: 0 0 .4ch rgba(0 0 0 / 20%);
 }
 
 @media screen and (max-width: 1200px) {

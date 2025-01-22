@@ -3,10 +3,8 @@ $max-items-to-show: 4;
 .container {
 	position: sticky;
 	top: 0;
-
 	display: flex;
 	align-items: center;
-
 	height: var(--header-height);
 	z-index: var(--z-index-header);
 	background-color: var(--primary-bg);
@@ -23,16 +21,13 @@ $max-items-to-show: 4;
 	cursor: pointer;
 	width: 1.5em;
 	height: 1.5em;
-	
 	display: none;
 	justify-content: center;
 	align-items: center;
-
 	border-radius: 0.2ch;
 	border: 0.1ch solid var(--primary-text);
 	background-color: transparent;
 	color: var(--primary-text);
-
 	font-size: 1.5em;
 }
 
@@ -69,6 +64,7 @@ $max-items-to-show: 4;
 .search {
 	position: relative;
 	width: 100%;
+
 	.searchBar {
 		width: 100%;
 		background-color: var(--primary-text);
@@ -78,10 +74,8 @@ $max-items-to-show: 4;
 		justify-content: flex-start;
 		align-items: center;
 		gap: 1ch;
-
 		padding: 0.5em 1em;
 		border-radius: 0.25em;
-
 		font-size: 1em;
 		transition: all 0.2s ease-in-out;
 
@@ -104,20 +98,19 @@ $max-items-to-show: 4;
 			color: var(--secondary-text);
 		}
 	}
+
 	.searchResultsWrapper {
 		position: absolute;
 		width: 100%;
 		height: max-content;
-		max-height: calc(var(--item-card-h-height) * $max-items-to-show);
+		max-height: calc(var(--item-card-h-height) * #{$max-items-to-show});
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
 		margin-top: 1ch;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden;
 		background-color: var(--primary-text);
-
 		box-shadow: var(--primary-box-shadow);
 
 		&::-webkit-scrollbar {
@@ -130,6 +123,7 @@ $max-items-to-show: 4;
 
 		&::-webkit-scrollbar-thumb {
 			background: var(--secondary-text);
+
 			&:hover {
 				background: var(--secondary-text);
 			}
@@ -144,19 +138,17 @@ $max-items-to-show: 4;
 			}
 
 			&:last-child:nth-child(n + #{$max-items-to-show + 1}) {
-				margin-bottom: calc(var(--item-card-h-height) * ($max-items-to-show - 1));
+				margin-bottom: calc(var(--item-card-h-height) * (#{$max-items-to-show - 1}));
 			}
 		}
 
 		.noResults {
 			width: 100%;
 			height: max-content;
-
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			padding: 2ch 0;
-
 			color: var(--third-text);
 			font-size: 0.8em;
 		}
@@ -164,12 +156,10 @@ $max-items-to-show: 4;
 		.viewMore {
 			width: 100%;
 			height: max-content;
-
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			padding: 2ch 0;
-
 			color: var(--third-text);
 			font-size: 0.8em;
 			cursor: pointer;
@@ -181,10 +171,11 @@ $max-items-to-show: 4;
 	}
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (width <= 1000px) {
 	.nav {
 		a {
 			border: 0.1em solid var(--primary-text);
+
 			span {
 				display: none;
 			}
@@ -192,7 +183,7 @@ $max-items-to-show: 4;
 	}
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
 	.container {
 		position: relative;
 	}
@@ -227,7 +218,7 @@ $max-items-to-show: 4;
 	}
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (width <= 550px) {
 	.left {
 		[class*="web-logo"] {
 			[class*="web-logo__block"] span {

@@ -6,35 +6,31 @@
 	gap: var(--item-card-v-gap);
 }
 
-.loadMore{
+.loadMore {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 	font-size: 1em;
 	text-wrap: nowrap;
-	button{
-		background-color: white;
 
+	button {
+		background-color: white;
 		border: 0.1ch solid var(--primary-border);
 		border-radius: 0.5ch;
 		padding: 1ch 10ch;
 		color: var(--third-text);
-
 		cursor: pointer;
 	}
 }
 
-.noMore{
+.noMore {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 	font-size: 1em;
 	text-wrap: nowrap;
-
 	color: var(--third-text);
 }
 
@@ -42,9 +38,11 @@
 	0% {
 		background-color: #e0e0e0;
 	}
+
 	50% {
 		background-color: #f0f0f0;
 	}
+
 	100% {
 		background-color: #e0e0e0;
 	}

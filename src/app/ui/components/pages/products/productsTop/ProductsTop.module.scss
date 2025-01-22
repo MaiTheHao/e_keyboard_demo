@@ -3,6 +3,7 @@ $max-items-to-show: 4;
 .search {
 	position: relative;
 	width: clamp(400px, 50%, 500px);
+
 	.searchBar {
 		width: 100%;
 		background-color: var(--primary-text);
@@ -12,10 +13,8 @@ $max-items-to-show: 4;
 		justify-content: flex-start;
 		align-items: center;
 		gap: 1ch;
-
 		padding: 0.5em 1em;
 		border-radius: 0.5em;
-
 		font-size: 1em;
 		transition: all 0.2s ease-in-out;
 
@@ -38,6 +37,7 @@ $max-items-to-show: 4;
 			color: var(--secondary-text);
 		}
 	}
+
 	.searchResultsWrapper {
 		position: absolute;
 		width: 100%;
@@ -48,10 +48,8 @@ $max-items-to-show: 4;
 		align-items: flex-start;
 		justify-content: flex-start;
 		margin-top: 1ch;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 		background-color: var(--primary-text);
-
 		box-shadow: var(--primary-box-shadow);
 
 		&::-webkit-scrollbar {
@@ -64,6 +62,7 @@ $max-items-to-show: 4;
 
 		&::-webkit-scrollbar-thumb {
 			background: var(--secondary-text);
+
 			&:hover {
 				background: var(--secondary-text);
 			}
@@ -85,12 +84,10 @@ $max-items-to-show: 4;
 		.noResults {
 			width: 100%;
 			height: max-content;
-
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			padding: 2ch 0;
-
 			color: var(--third-text);
 			font-size: 0.8em;
 		}
@@ -99,9 +96,9 @@ $max-items-to-show: 4;
 
 .filterContainer {
 	width: 100%;
+
 	.filterBar {
 		width: 100%;
-
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -110,13 +107,13 @@ $max-items-to-show: 4;
 
 		&__element {
 			position: relative;
+
 			&__button {
 				position: relative;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				gap: 1ch;
-
 				background-color: transparent;
 				color: var(--secondary-text);
 				border: 0.1ch solid var(--secondary-text);
@@ -136,13 +133,11 @@ $max-items-to-show: 4;
 				width: max-content;
 				top: 150%;
 				left: 0;
-
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				gap: 1ch;
-
 				background-color: var(--primary-text);
 				border: 0.1ch solid var(--primary-border);
 				border-radius: 0.25em;
@@ -180,14 +175,15 @@ $max-items-to-show: 4;
 
 	.filterWrapperContainer {
 		display: flex;
+
 		&:not(.visible) {
 			display: none;
 		}
-		justify-content: center;
 
+		justify-content: center;
 		position: fixed;
-		inset: 0 0 0 0;
-		background-color: rgba(0, 0, 0, 0.5);
+		inset: 0;
+		background-color: rgb(0 0 0 / 50%);
 
 		.filterWrapperContent {
 			position: relative;
@@ -196,7 +192,6 @@ $max-items-to-show: 4;
 			height: max-content;
 			max-height: min(600px, 80vh);
 			margin-top: calc(var(--header-height) + 2ch);
-
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -213,13 +208,11 @@ $max-items-to-show: 4;
 				button {
 					cursor: pointer;
 					background-color: transparent;
-					border: none;
 					font-size: 1em;
 					padding: 0.5em;
 					border: 0.05rem solid var(--primary-border);
 					border-radius: 0.25em;
 					color: var(--third-text);
-
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -239,11 +232,9 @@ $max-items-to-show: 4;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 2ch;
 				padding: 1em;
-
 				width: 100%;
 				height: max-content;
-				overflow-x: hidden;
-				overflow-y: auto;
+				overflow: hidden auto;
 
 				&::-webkit-scrollbar {
 					width: 0.5ch;
@@ -255,6 +246,7 @@ $max-items-to-show: 4;
 
 				&::-webkit-scrollbar-thumb {
 					background: var(--secondary-text);
+
 					&:hover {
 						background: var(--secondary-text);
 					}
@@ -267,7 +259,6 @@ $max-items-to-show: 4;
 					flex-direction: column;
 					align-items: center;
 					gap: 1ch;
-
 					font-size: 0.9em;
 
 					&__label {
@@ -276,12 +267,10 @@ $max-items-to-show: 4;
 						justify-content: flex-start;
 						align-items: center;
 						gap: 1ch;
-
 						background-color: var(--info);
 						color: var(--primary-text);
 						font-weight: 700;
-
-						padding: 0.5ch 0.5ch;
+						padding: 0.5ch;
 					}
 
 					&__options {
@@ -291,16 +280,14 @@ $max-items-to-show: 4;
 						align-items: flex-start;
 						flex-wrap: wrap;
 						gap: 0.75ch;
-
-						overflow-x: hidden;
-						overflow-y: auto;
+						overflow: hidden auto;
 
 						&::-webkit-scrollbar {
 							width: 0.2ch;
 						}
 
 						&::-webkit-scrollbar-track {
-							background: rgb(0, 0, 0, 0.2);
+							background: rgb(0 0 0 / 20%);
 						}
 
 						&::-webkit-scrollbar-thumb {
@@ -310,16 +297,12 @@ $max-items-to-show: 4;
 						button {
 							width: max-content;
 							padding: 0.5em 1em;
-
 							border: 0.05rem solid var(--primary-border);
 							border-radius: 0.25em;
-
 							background-color: transparent;
 							color: var(--third-text);
 							font-weight: 200;
-
 							cursor: pointer;
-
 							transition: all 0.2s ease-in-out;
 
 							&:hover {
@@ -342,7 +325,6 @@ $max-items-to-show: 4;
 				display: flex;
 				justify-content: center;
 				gap: 1ch;
-
 				padding-top: 0.5em;
 				border-top: 0.05rem solid var(--primary-border);
 
