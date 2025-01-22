@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 // Lấy các biến môi trường cần thiết
 const { DATABASE_PASSWORD, DATABASE_URI, DATABASE_MAX_POOL_SIZE, DATABASE_NAME, DATABASE_PRODUCTS_COLLECTION, DATABASE_USERS_COLLECTION } = process.env;
 if (!DATABASE_URI || !DATABASE_NAME || !DATABASE_PRODUCTS_COLLECTION || !DATABASE_USERS_COLLECTION) {
-    throw new Error('Thiếu các biến môi trường bắt buộc: DATABASE_URI, DATABASE_NAME, DATABASE_PRODUCTS_COLLECTION, hoặc DATABASE_USERS_COLLECTION');
+    console.error('Cần cung cấp DATABASE_URI, DATABASE_NAME, DATABASE_PRODUCTS_COLLECTION, DATABASE_USERS_COLLECTION trong biến môi trường');
 }
 
 // Cấu hình kết nối tới MongoDB
