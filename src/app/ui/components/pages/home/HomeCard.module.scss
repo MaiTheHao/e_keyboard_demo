@@ -48,3 +48,51 @@
 		margin-left: 0.5em;
 	}
 }
+@media screen and (width <= 1200px) {
+	.card {
+		width: 75%;
+		padding: 2.5em 1em;
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (width <= 900px) {
+	.card {
+		min-width: 0;
+		width: 85%;
+		padding: 2em 1em;
+		font-size: 1.15em;
+	}
+
+	.card__title{
+		text-align: center;
+	}
+}
+
+@media screen and (width <= 600px) {
+	.card {
+		width: 95%;
+		padding: 1.5em 0.8em;
+		font-size: 1.1em;
+	}
+
+	.card__title {
+		font-size: 1.3em;
+	}
+
+	.card__description {
+		font-size: 0.9em;
+	}
+}
+
+@media screen and (width <= 380px) {
+	.card {
+		width: 100%;
+		padding: 1.2em 0.6em;
+		font-size: 1em;
+	}
+
+	.card__title {
+		font-size: 1.2em;
+	}
+}
