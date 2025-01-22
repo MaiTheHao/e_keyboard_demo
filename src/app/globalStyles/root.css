@@ -1,9 +1,9 @@
 :root {
 	/* COLOR */
 	--primary-bg: #789DBC;
-	--primary-bg-hover: #1a3e63;
-	--secondary-bg: rgb(155, 193, 224);
-	--secondary-bg-hover: #5a748d;
+	--primary-bg-hover: rgba(75, 154, 232, 0.8);
+	--secondary-bg: #8EACCD;
+	--secondary-bg-hover: rgba(172, 200, 244, 0.8);
 	--gray-bg: rgb(0, 0, 0, 5%);
 	--primary-text: white;
 	--secondary-text: #333;
