@@ -22,7 +22,8 @@
     "react-dom": "^19.0.0",
     "sass": "^1.83.4",
     "tls": "^0.0.1",
-    "@types/whatwg-url": "^13.0.0"
+    "@types/whatwg-url": "^13.0.0",
+    "mongodb-uri": "0.9.7"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
