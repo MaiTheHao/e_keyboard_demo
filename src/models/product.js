@@ -66,10 +66,10 @@ export default class Product {
 
 	initSpecialFields() {
 		if (!this.description) {
-			const name = this.name.charAt(0).toUpperCase() + this.name.slice(1).toLowerCase();
+			const name = upperFirst(this.name);
 			const layout = this.layout.toLowerCase();
-			const caseMaterial = this.caseMaterial.charAt(0).toUpperCase() + this.caseMaterial.slice(1).toLowerCase();
-			const switchType = this.switchType.charAt(0).toUpperCase() + this.switchType.slice(1).toLowerCase();
+			const caseMaterial = upperFirst(this.caseMaterial);
+			const switchType = upperFirst(this.switchType);
 
 			this.description = `${name} - ${layout} layout, ${caseMaterial} case, ${switchType} switches.`;
 		}
