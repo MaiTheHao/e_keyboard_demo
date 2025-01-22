@@ -384,8 +384,12 @@ $max-items-to-show: 4;
 			max-height: none !important;
 			margin-top: var(--header-height) !important;
 			padding-bottom: calc(var(--header-height) + 2ch) !important;
+
 			&__list{
 				grid-template-columns: repeat(1, 1fr) !important;
+				&::-webkit-scrollbar {
+					width: 0 !important;
+				}
 			}
 		}
 	}
