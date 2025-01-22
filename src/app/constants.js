@@ -39,3 +39,19 @@ export const HOME_PAGE_CONTENTS = {
 		},
 	],
 };
+
+// PAGES METADATA
+export const HOME_PAGE_METADATA = {
+	title: WEB_NAME,
+	description: WEB_DESCRIPTION,
+};
+
+export const PRODUCTS_PAGE_METADATA = {
+	title: "Sản phẩm",
+	description: "Danh sách sản phẩm của chúng tôi.",
+};
+
+export const PRODUCT_PAGE_METADATA = {
+	title: "Chi tiết sản phẩm",
+	description: "Chi tiết sản phẩm.",
+};

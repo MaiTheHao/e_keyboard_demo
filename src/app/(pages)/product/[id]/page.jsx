@@ -6,14 +6,13 @@ import LinkBtn from "@/app/ui/components/button/LinkBtn";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, upperFirst } from "@/utils/text";
 import { getProductById } from "@/lib/fetchProduct";
+import { PRODUCT_PAGE_METADATA } from "@/app/constants";
 
 export async function generateMetadata({ params }) {
 	const { id } = await params;
 	const product = await getProductById(id);
-	return {
-		title: upperFirst(product?.name) || "Không tìm thấy sản phẩm",
-		description: product?.description || "Trang miêu tả sản phẩm cụ thê",
-	};
+	const metadata = product ? { title: upperFirst(product.name), description: product.description } : PRODUCT_PAGE_METADATA;
+	return metadata;
 }
 
 const ProductSpecs = ({ label, value, colorVar = null }) => (
