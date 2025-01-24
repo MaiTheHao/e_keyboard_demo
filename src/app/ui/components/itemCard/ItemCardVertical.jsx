@@ -8,7 +8,7 @@ import { faEye, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import NullImage from "./NullImage";
 
 function ItemCardVertical({ product }) {
-	const itemHref = `/product/${product.id}`;
+	const itemHref = `/products/${product.id}`;
 	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
 		<div className={`${styles.container} ${styles.ItemCardVertical} card`}>
