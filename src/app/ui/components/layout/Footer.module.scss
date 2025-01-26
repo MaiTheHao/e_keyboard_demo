@@ -57,3 +57,24 @@
 		}
 	}
 }
+
+@media (max-width: 768px) {
+	.block {
+		flex-direction: column;
+		gap: 1.5ch;
+
+		span {
+			font-size: 0.875em;
+		}
+
+		.contact {
+			font-size: 1.25em;
+
+			a {
+				svg {
+					padding: 0.5em;
+				}
+			}
+		}
+	}
+}
