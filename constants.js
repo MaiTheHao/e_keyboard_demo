@@ -42,18 +42,18 @@ export const HOME_PAGE_CONTENTS = {
 
 // PAGES METADATA
 export const HOME_PAGE_METADATA = {
-	title: WEB_NAME,
+	title: "Trang chủ",
 	description: WEB_DESCRIPTION,
 };
 
 export const PRODUCTS_PAGE_METADATA = {
-	title: "Sản phẩm",
-	description: "Danh sách sản phẩm của chúng tôi.",
+	title: "Danh sách sản phẩm",
+	description: "Danh sách các sản phẩm hiện có của chúng tôi.",
 };
 
 export const PRODUCT_PAGE_METADATA = {
 	title: "Chi tiết sản phẩm",
-	description: "Chi tiết sản phẩm.",
+	description: "Chi tiết sản phẩm mà bạn lựa chọn. Hãy xem ngay!",
 };
 
 // FILTER & SORT
