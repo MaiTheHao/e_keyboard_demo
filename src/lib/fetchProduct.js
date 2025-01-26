@@ -1,4 +1,4 @@
-'use server';
+"use server";
 import { productsCollection } from "@/configs/mongoDBConfig";
 import { ObjectId } from "mongodb";
 import { validateProduct, serializeProducts, serializeProduct } from "@/models/product";
@@ -14,7 +14,7 @@ export async function createProduct(product) {
 // READ
 export async function getAllProducts(limit = 0, skip = 0) {
 	const products = await productsCollection.find({}).skip(skip).limit(limit).toArray();
-	const response = serializeProducts(products)
+	const response = serializeProducts(products);
 	return response;
 }
 
@@ -42,16 +42,18 @@ export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort 
 			},
 		};
 
-		products = await productsCollection.aggregate([
-			{ $match: sanitizedQuery },
-			sortOrder,
-			{ $sort: { sortOrder: 1 } },
-			{ $skip: skip },
-			{ $limit: limit },
-			{ $project: { sortOrder: 0 } },
-		]).toArray();
+		products = await productsCollection
+			.aggregate([
+				{ $match: sanitizedQuery },
+				sortOrder,
+				{ $sort: { sortOrder: 1, _id: -1 } },
+				{ $skip: skip },
+				{ $limit: limit },
+				{ $project: { sortOrder: 0 } },
+			])
+			.toArray();
 	} else {
-		products = await productsCollection.find(sanitizedQuery).skip(skip).limit(limit).sort(sort).toArray();
+		products = await productsCollection.find(sanitizedQuery).sort(sort).skip(skip).limit(limit).toArray();
 	}
 
 	return products ? serializeProducts(products) : null;

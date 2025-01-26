@@ -55,7 +55,6 @@ function ItemGrid({ maxPerPage = 15 }) {
 
 		setAbleToLoadMore(response.length > maxPerPage);
 		setProducts([...products, ...response.slice(0, maxPerPage)]);
-		setIsPending(false);
 	};
 
 	useEffect(() => {

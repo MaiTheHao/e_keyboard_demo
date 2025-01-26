@@ -157,10 +157,12 @@ export const SORT_OPTIONS = [
 		field: "layout",
 		customOrder: {
 			Fullsize: 1,
-			TKL: 2,
-			"75%": 3,
-			"65%": 4,
-			"60%": 5,
+			"96%": 2,
+			TKL: 3,
+			Tenkeyless: 3,
+			"75%": 4,
+			"65%": 5,
+			"60%": 6,
 		},
 	},
 	{
