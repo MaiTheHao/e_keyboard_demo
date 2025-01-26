@@ -5,6 +5,8 @@ import ItemCard from "../../itemCard/ItemCardVertical";
 import ItemGridSkeleton from "./ItemGridSkeleton";
 import { getProductsByQuery } from "@/lib/fetchProduct";
 import useProductsContext from "@/contexts/products/useProductsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const generateQuery = (filter) => {
 	const newQuery = filter
@@ -37,40 +39,38 @@ const loadProducts = async (query, sort, maxPerPage) => {
 function ItemGrid({ maxPerPage = 15 }) {
 	const [query, setQuery] = useState({});
 	const [products, setProducts] = useState([]);
-	const [isPending, setIsPending] = useState(true);
+	const [isPending, setIsPending] = useState({ loadItems: true, loadMore: false });
 	const [ableToLoadMore, setAbleToLoadMore] = useState(true);
 	const { filter, sort } = useProductsContext();
 
 	const handleLoadMore = async () => {
-		let response;
-		if (sort?.customOrder) {
-			response = await getProductsByQuery(query, maxPerPage + 1, products.length, {
-				customOrder: sort.customOrder,
-				field: sort.field,
-			});
-		} else {
-			const sortOption = sort?.mongoSort || { _id: -1 };
-			response = await getProductsByQuery(query, maxPerPage + 1, products.length, sortOption);
-		}
+		if (isPending.loadMore || !ableToLoadMore) return;
+		setIsPending((prev) => ({ ...prev, loadMore: true }));
+
+		const sortOption = sort?.customOrder
+			? { customOrder: sort.customOrder, field: sort.field }
+			: sort?.mongoSort || { _id: -1 };
+		const response = await getProductsByQuery(query, maxPerPage + 1, products.length, sortOption);
 
 		setAbleToLoadMore(response.length > maxPerPage);
-		setProducts([...products, ...response.slice(0, maxPerPage)]);
+		setProducts((prev) => [...prev, ...response.slice(0, maxPerPage)]);
+		setIsPending((prev) => ({ ...prev, loadMore: false }));
 	};
 
 	useEffect(() => {
 		setQuery(generateQuery(filter));
-		setIsPending(true);
+		setIsPending({ ...isPending, loadItems: true });
 	}, [filter]);
 
 	useEffect(() => {
 		loadProducts(query, sort, maxPerPage).then((response) => {
 			setAbleToLoadMore(response.length > maxPerPage);
 			setProducts(response.slice(0, maxPerPage));
-			setIsPending(false);
+			setIsPending({ ...isPending, loadItems: false });
 		});
 	}, [query, sort]);
 
-	if (isPending) {
+	if (isPending.loadItems) {
 		return <ItemGridSkeleton />;
 	}
 
@@ -83,7 +83,8 @@ function ItemGrid({ maxPerPage = 15 }) {
 			</div>
 			{(ableToLoadMore && (
 				<div className={styles.loadMore}>
-					<button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>
+					{isPending.loadMore && <span style={{color: "var(--third-text)"}}><FontAwesomeIcon icon={faSpinner} spin/> Đang tải...</span>}
+					{!isPending.loadMore && <button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>}
 				</div>
 			)) || (
 				<div className={styles.noMore}>
