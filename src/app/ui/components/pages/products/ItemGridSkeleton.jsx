@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ItemGrid.module.scss";
 import ItemCardVerticalSkeleton from "../../itemCard/ItemCardVerticalSkeleton";
 
-function ItemGridSkeleton({count = 15}) {
+function ItemGridSkeleton({count = 20}) {
     const skeletonItems = Array.from({ length: count });
 
     return (

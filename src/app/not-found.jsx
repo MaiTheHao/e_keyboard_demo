@@ -9,7 +9,7 @@ function NotFound() {
 	return <div className={`${styles.container} top-container`}>
         <h1 className={styles.icon}><FontAwesomeIcon icon={faTriangleExclamation} /></h1>
         <h2 className={styles.title}>Không tìm thấy bất kì trang hoặc tài liệu hợp lệ nào!</h2>
-        <LinkBtn href="home" text="Quay về trang chủ" icon={faArrowPointer}/>
+        <LinkBtn href="/home" text="Quay về trang chủ" icon={faArrowPointer}/>
     </div>;
 }
 
