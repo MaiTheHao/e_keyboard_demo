@@ -176,3 +176,6 @@ export const SORT_OPTIONS = [
 		},
 	},
 ];
+
+// ITEM CARD NAVIGATE PATH
+export const ITEM_CARD_NAVIGATE_PATH = "/product";

@@ -5,9 +5,10 @@ import Image from "next/image";
 import styles from "./ItemCard.module.scss";
 import NullImage from "./NullImage";
 import Link from "next/link";
+import { ITEM_CARD_NAVIGATE_PATH } from "../../../../../constants";
 
 function ItemCardHorizon({ product }) {
-	const itemHref = `/product/${product.id}`;
+	const itemHref = `${ITEM_CARD_NAVIGATE_PATH}/${product.id}`;
 	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
 		<Link href={itemHref} className={`${styles.container} ${styles.ItemCardHorizon} card`}>

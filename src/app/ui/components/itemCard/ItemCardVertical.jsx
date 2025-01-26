@@ -6,9 +6,10 @@ import styles from "./ItemCard.module.scss";
 import LinkBtn from "../button/LinkBtn";
 import { faEye, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import NullImage from "./NullImage";
+import { ITEM_CARD_NAVIGATE_PATH } from "../../../../../constants";
 
 function ItemCardVertical({ product }) {
-	const itemHref = `/products/${product.id}`;
+	const itemHref = `${ITEM_CARD_NAVIGATE_PATH}/${product.id}`;
 	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
 		<div className={`${styles.container} ${styles.ItemCardVertical} card`}>
