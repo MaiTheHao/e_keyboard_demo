@@ -25,38 +25,42 @@ export async function getProductById(id) {
 
 export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort = { _id: -1 }) {
 	const sanitizedQuery = Object.keys(query).length === 0 ? {} : query;
-	let products;
+	const isCustomSort = Boolean(sort?.customOrder);
 
-	if (sort?.customOrder) {
-		const sortOrder = {
-			$addFields: {
-				sortOrder: {
-					$switch: {
-						branches: Object.entries(sort.customOrder).map(([key, value]) => ({
-							case: { $eq: [{ $toLower: `$${sort.field}` }, key.toLowerCase()] },
-							then: value,
-						})),
-						default: 99,
+	const sortOrderStage = isCustomSort
+		? {
+				$addFields: {
+					sortOrder: {
+						$switch: {
+							branches: Object.entries(sort.customOrder).map(([key, value]) => ({
+								case: { $eq: [{ $toLower: `$${sort.field}` }, key.toLowerCase()] },
+								then: value,
+							})),
+							default: 99,
+						},
 					},
 				},
-			},
-		};
+		  }
+		: null;
 
-		products = await productsCollection
-			.aggregate([
-				{ $match: sanitizedQuery },
-				sortOrder,
-				{ $sort: { sortOrder: 1, _id: -1 } },
-				{ $skip: skip },
-				{ $limit: limit },
-				{ $project: { sortOrder: 0 } },
-			])
-			.toArray();
-	} else {
-		products = await productsCollection.find(sanitizedQuery).sort(sort).skip(skip).limit(limit).toArray();
-	}
+	const pipeline = [
+		{ $match: sanitizedQuery },
+		...(isCustomSort ? [sortOrderStage, { $sort: { sortOrder: 1, _id: -1 } }] : []),
+		{ $skip: skip },
+		{ $limit: limit },
+		...(isCustomSort ? [{ $project: { sortOrder: 0 } }] : []),
+	];
 
-	return products ? serializeProducts(products) : null;
+	const products = isCustomSort
+		? await productsCollection.aggregate(pipeline).toArray()
+		: await productsCollection
+				.find(sanitizedQuery)
+				.sort({ ...sort, _id: -1 })
+				.skip(skip)
+				.limit(limit)
+				.toArray();
+
+	return serializeProducts(products);
 }
 
 export async function getProductByQuery(query = {}) {
