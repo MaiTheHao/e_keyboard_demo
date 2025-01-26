@@ -1,5 +1,6 @@
 import { PRODUCTS_PAGE_METADATA } from "../../../../constants";
 import ItemGrid from "@/app/ui/components/pages/products/ItemGrid";
+import { getAllProducts } from "@/lib/fetchProduct";
 import React from "react";
 
 export const metadata = {
@@ -7,6 +8,13 @@ export const metadata = {
 };
 
 const MAX_PER_PAGE = 20;
-export default function Products() {
-	return <ItemGrid maxPerPage={MAX_PER_PAGE} />;
+export default async function Products() {
+	const initProducts = await getAllProducts(MAX_PER_PAGE + 1);
+	const ableToloadMore = initProducts.length > MAX_PER_PAGE;
+
+	const initProps = {
+		products: initProducts.slice(0, MAX_PER_PAGE),
+		ableToLoadMore: ableToloadMore
+	};
+	return <ItemGrid initProps={initProps} maxPerPage={MAX_PER_PAGE} />;
 }

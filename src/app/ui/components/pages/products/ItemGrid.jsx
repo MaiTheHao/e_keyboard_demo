@@ -36,11 +36,11 @@ const loadProducts = async (query, sort, maxPerPage) => {
 	return response;
 };
 
-function ItemGrid({ maxPerPage = 15 }) {
+function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerPage = 15 }) {
 	const [query, setQuery] = useState({});
-	const [products, setProducts] = useState([]);
-	const [isPending, setIsPending] = useState({ loadItems: true, loadMore: false });
-	const [ableToLoadMore, setAbleToLoadMore] = useState(true);
+	const [products, setProducts] = useState(initProps.products);
+	const [isPending, setIsPending] = useState({ loadItems: false, loadMore: false });
+	const [ableToLoadMore, setAbleToLoadMore] = useState(initProps.ableToLoadMore);
 	const { filter, sort } = useProductsContext();
 
 	const handleLoadMore = async () => {
@@ -58,17 +58,22 @@ function ItemGrid({ maxPerPage = 15 }) {
 	};
 
 	useEffect(() => {
-		setQuery(generateQuery(filter));
-		setIsPending({ ...isPending, loadItems: true });
+		const newQuery = generateQuery(filter);
+		if (JSON.stringify(newQuery) !== JSON.stringify(query)) {
+			setQuery(newQuery);
+			setIsPending({ ...isPending, loadItems: true });
+		}
 	}, [filter]);
 
 	useEffect(() => {
-		loadProducts(query, sort, maxPerPage).then((response) => {
-			setAbleToLoadMore(response.length > maxPerPage);
-			setProducts(response.slice(0, maxPerPage));
-			setIsPending({ ...isPending, loadItems: false });
-		});
-	}, [query, sort]);
+		if (isPending.loadItems) {
+			loadProducts(query, sort, maxPerPage).then((response) => {
+				setAbleToLoadMore(response.length > maxPerPage);
+				setProducts(response.slice(0, maxPerPage));
+				setIsPending({ ...isPending, loadItems: false });
+			});
+		}
+	}, [query, sort, maxPerPage, isPending.loadItems]);
 
 	if (isPending.loadItems) {
 		return <ItemGridSkeleton />;
@@ -83,7 +88,7 @@ function ItemGrid({ maxPerPage = 15 }) {
 			</div>
 			{(ableToLoadMore && (
 				<div className={styles.loadMore}>
-					{isPending.loadMore && <span style={{color: "var(--third-text)"}}><FontAwesomeIcon icon={faSpinner} spin/> Đang tải...</span>}
+					{isPending.loadMore && <span style={{ color: "var(--third-text)" }}><FontAwesomeIcon icon={faSpinner} spin /> Đang tải...</span>}
 					{!isPending.loadMore && <button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>}
 				</div>
 			)) || (
