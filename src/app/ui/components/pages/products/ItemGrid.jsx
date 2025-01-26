@@ -8,8 +8,8 @@ import useProductsContext from "@/contexts/products/useProductsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-const generateQuery = (filter) => {
-	const newQuery = filter
+const generateQuery = (filter, sort) => {
+	const newFilterQuery = filter
 		? Object.entries(filter).reduce((ac, [key, value]) => {
 				if (!value) return ac;
 				if (Array.isArray(value) && value.length === 0) return ac;
@@ -17,20 +17,24 @@ const generateQuery = (filter) => {
 				return ac;
 		  }, {})
 		: {};
+	const newSortQuery = sort || {};
 
+	const newQuery = { filter: newFilterQuery, sorter: newSortQuery };
 	return newQuery;
 };
 
-const loadProducts = async (query, sort, maxPerPage) => {
+const loadProducts = async (query, maxPerPage) => {
+	const { filterQuery, sorter } = query;
+
 	let response;
-	if (sort?.customOrder) {
-		response = await getProductsByQuery(query, maxPerPage + 1, 0, {
-			customOrder: sort.customOrder,
-			field: sort.field,
+	if (sorter?.customOrder) {
+		response = await getProductsByQuery(filterQuery, maxPerPage + 1, 0, {
+			customOrder: sorter.customOrder,
+			field: sorter.field,
 		});
 	} else {
-		const sortOption = sort?.mongoSort || { _id: -1 };
-		response = await getProductsByQuery(query, maxPerPage + 1, 0, sortOption);
+		const sortOption = sorter?.mongoSort || { _id: -1 };
+		response = await getProductsByQuery(filterQuery, maxPerPage + 1, 0, sortOption);
 	}
 
 	return response;
@@ -44,13 +48,14 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 	const { filter, sort } = useProductsContext();
 
 	const handleLoadMore = async () => {
+		const { filterQuery, sorter } = query;
 		if (isPending.loadMore || !ableToLoadMore) return;
 		setIsPending((prev) => ({ ...prev, loadMore: true }));
 
-		const sortOption = sort?.customOrder
-			? { customOrder: sort.customOrder, field: sort.field }
-			: sort?.mongoSort || { _id: -1 };
-		const response = await getProductsByQuery(query, maxPerPage + 1, products.length, sortOption);
+		const sortOption = sorter?.customOrder
+			? { customOrder: sorter.customOrder, field: sorter.field }
+			: sorter?.mongoSort || { _id: -1 };
+		const response = await getProductsByQuery(filterQuery, maxPerPage + 1, products.length, sortOption);
 
 		setAbleToLoadMore(response.length > maxPerPage);
 		setProducts((prev) => [...prev, ...response.slice(0, maxPerPage)]);
@@ -58,22 +63,22 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 	};
 
 	useEffect(() => {
-		const newQuery = generateQuery(filter);
+		const newQuery = generateQuery(filter, sort);
 		if (JSON.stringify(newQuery) !== JSON.stringify(query)) {
 			setQuery(newQuery);
 			setIsPending({ ...isPending, loadItems: true });
 		}
-	}, [filter]);
+	}, [filter, sort]);
 
 	useEffect(() => {
 		if (isPending.loadItems) {
-			loadProducts(query, sort, maxPerPage).then((response) => {
+			loadProducts(query, maxPerPage).then((response) => {
 				setAbleToLoadMore(response.length > maxPerPage);
 				setProducts(response.slice(0, maxPerPage));
 				setIsPending({ ...isPending, loadItems: false });
 			});
 		}
-	}, [query, sort, maxPerPage, isPending.loadItems]);
+	}, [query, maxPerPage, isPending.loadItems]);
 
 	if (isPending.loadItems) {
 		return <ItemGridSkeleton />;
@@ -88,7 +93,11 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 			</div>
 			{(ableToLoadMore && (
 				<div className={styles.loadMore}>
-					{isPending.loadMore && <span style={{ color: "var(--third-text)" }}><FontAwesomeIcon icon={faSpinner} spin /> Đang tải...</span>}
+					{isPending.loadMore && (
+						<span style={{ color: "var(--third-text)" }}>
+							<FontAwesomeIcon icon={faSpinner} spin /> Đang tải...
+						</span>
+					)}
 					{!isPending.loadMore && <button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>}
 				</div>
 			)) || (
