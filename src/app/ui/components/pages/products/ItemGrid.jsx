@@ -17,45 +17,43 @@ const generateQuery = (filter, sort) => {
 				return ac;
 		  }, {})
 		: {};
-	const newSortQuery = sort || {};
+	const newSortQuery = sort || null;
 
 	const newQuery = { filter: newFilterQuery, sorter: newSortQuery };
 	return newQuery;
 };
 
 const loadProducts = async (query, maxPerPage) => {
-	const { filterQuery, sorter } = query;
-
 	let response;
-	if (sorter?.customOrder) {
-		response = await getProductsByQuery(filterQuery, maxPerPage + 1, 0, {
-			customOrder: sorter.customOrder,
-			field: sorter.field,
+
+	if (query.sorter?.customOrder) {
+		response = await getProductsByQuery(query.filter, maxPerPage + 1, 0, {
+			customOrder: query.sorter.customOrder,
+			field: query.sorter.field,
 		});
 	} else {
-		const sortOption = sorter?.mongoSort || { _id: -1 };
-		response = await getProductsByQuery(filterQuery, maxPerPage + 1, 0, sortOption);
+		const sortOption = query.sorter?.mongoSort || { _id: -1 };
+		response = await getProductsByQuery(query.filter, maxPerPage + 1, 0, sortOption);
 	}
 
 	return response;
 };
 
 function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerPage = 15 }) {
-	const [query, setQuery] = useState({});
+	const [query, setQuery] = useState({ filter: {}, sorter: null });
 	const [products, setProducts] = useState(initProps.products);
 	const [isPending, setIsPending] = useState({ loadItems: false, loadMore: false });
 	const [ableToLoadMore, setAbleToLoadMore] = useState(initProps.ableToLoadMore);
 	const { filter, sort } = useProductsContext();
 
 	const handleLoadMore = async () => {
-		const { filterQuery, sorter } = query;
 		if (isPending.loadMore || !ableToLoadMore) return;
 		setIsPending((prev) => ({ ...prev, loadMore: true }));
 
-		const sortOption = sorter?.customOrder
-			? { customOrder: sorter.customOrder, field: sorter.field }
-			: sorter?.mongoSort || { _id: -1 };
-		const response = await getProductsByQuery(filterQuery, maxPerPage + 1, products.length, sortOption);
+		const sortOption = query.sorter?.customOrder
+			? { customOrder: query.sorter.customOrder, field: query.sorter.field }
+			: query.sorter?.mongoSort || { _id: -1 };
+		const response = await getProductsByQuery(query.filter, maxPerPage + 1, products.length, sortOption);
 
 		setAbleToLoadMore(response.length > maxPerPage);
 		setProducts((prev) => [...prev, ...response.slice(0, maxPerPage)]);

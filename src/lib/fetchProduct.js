@@ -24,6 +24,7 @@ export async function getProductById(id) {
 }
 
 export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort = { _id: -1 }) {
+	console.log(query);
 	const sanitizedQuery = Object.keys(query).length === 0 ? {} : query;
 	const isCustomSort = Boolean(sort?.customOrder);
 
