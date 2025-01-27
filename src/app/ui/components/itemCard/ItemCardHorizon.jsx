@@ -6,10 +6,10 @@ import styles from "./ItemCard.module.scss";
 import NullImage from "./NullImage";
 import Link from "next/link";
 import { ITEM_CARD_NAVIGATE_PATH } from "../../../../../constants";
+import { generateCurrencyString } from "@/utils/text";
 
 function ItemCardHorizon({ product }) {
 	const itemHref = `${ITEM_CARD_NAVIGATE_PATH}/${product.id}`;
-	const locale = product.currency === "VND" ? "vi-VN" : "en-US";
 	return (
 		<Link href={itemHref} className={`${styles.container} ${styles.ItemCardHorizon} card`}>
 			<div className={styles.image}>
@@ -29,7 +29,7 @@ function ItemCardHorizon({ product }) {
 				<h1 className={styles.name}>{product.name}</h1>
 				<p className={styles.description}>{product.description}</p>
 				<h1 className={styles.price}>
-					{product.price.toLocaleString(locale)}
+					{generateCurrencyString(product.price, product.currency)}
 					<span>{product.currency}</span>
 				</h1>
 			</div>
