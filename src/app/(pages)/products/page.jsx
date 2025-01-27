@@ -3,7 +3,7 @@ import ItemGrid from "@/app/ui/components/pages/products/ItemGrid";
 import { getAllProducts } from "@/lib/fetchProduct";
 import React from "react";
 
-export const revalidate = 15;
+export const revalidate = 15; // Update lại initProps sau 15s
 export const metadata = {
 	...PRODUCTS_PAGE_METADATA
 };
