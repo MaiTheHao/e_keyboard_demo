@@ -4,8 +4,8 @@ import ScreenSizeContext from "./ScreenSizeContext";
 
 export default function ScreenSizeContextProvider({ children }) {
 	const [screenSize, setScreenSize] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
+		width: 0,
+		height: 0,
 	});
 
     const [screenStatus, setScreenStatus] = useState({
