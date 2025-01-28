@@ -11,6 +11,7 @@ config.autoAddCss = false;
 import Header from "./ui/components/layout/Header";
 import Footer from "./ui/components/layout/Footer";
 import { CREATOR, WEB_DESCRIPTION, WEB_NAME } from "../../constants";
+import ScreenSizeContextProvider from "@/contexts/ScreenSizeContext/ScreenSizeContextProvider";
 
 export const metadata = {
 	title: WEB_NAME,
@@ -22,13 +23,15 @@ function layout({ children }) {
 	return (
 		<html>
 			<body className={mainFont.className}>
-				<div id="root">
-					<Header />
-					<main className="webpart top-body">
-						<div className="top-container">{children}</div>
-					</main>
-					<Footer />
-				</div>
+				<ScreenSizeContextProvider>
+					<div id="root">
+						<Header />
+						<main className="webpart top-body">
+							<div className="top-container">{children}</div>
+						</main>
+						<Footer />
+					</div>
+				</ScreenSizeContextProvider>
 			</body>
 		</html>
 	);
