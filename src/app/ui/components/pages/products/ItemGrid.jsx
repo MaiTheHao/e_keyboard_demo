@@ -52,7 +52,8 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 
 		const sortOption = query.sorter?.customOrder
 			? { customOrder: query.sorter.customOrder, field: query.sorter.field }
-			: query.sorter?.mongoSort || { _id: -1 };
+			: query.sorter?.mongoSort;
+
 		const response = await getProductsByQuery(query.filter, maxPerPage + 1, products.length, sortOption);
 
 		setAbleToLoadMore(response.length > maxPerPage);

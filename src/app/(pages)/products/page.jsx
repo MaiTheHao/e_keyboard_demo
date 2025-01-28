@@ -8,7 +8,7 @@ export const metadata = {
 	...PRODUCTS_PAGE_METADATA
 };
 
-const MAX_PER_PAGE = 20;
+const MAX_PER_PAGE = 15;
 export default async function Products() {
 	const initProducts = await getAllProducts(MAX_PER_PAGE + 1);
 	const ableToloadMore = initProducts.length > MAX_PER_PAGE;

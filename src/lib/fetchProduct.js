@@ -13,7 +13,7 @@ export async function createProduct(product) {
 
 // READ
 export async function getAllProducts(limit = 0, skip = 0) {
-	const products = await productsCollection.find({}).skip(skip).limit(limit).toArray();
+	const products = await productsCollection.find({}).sort({_id: -1}).skip(skip).limit(limit).toArray();
 	const response = serializeProducts(products);
 	return response;
 }
@@ -24,10 +24,8 @@ export async function getProductById(id) {
 }
 
 export async function getProductsByQuery(query = {}, limit = 15, skip = 0, sort = { _id: -1 }) {
-	console.log(query);
 	const sanitizedQuery = Object.keys(query).length === 0 ? {} : query;
 	const isCustomSort = Boolean(sort?.customOrder);
-
 	const sortOrderStage = isCustomSort
 		? {
 				$addFields: {
