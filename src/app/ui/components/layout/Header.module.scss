@@ -131,7 +131,7 @@ $max-items-to-show: 4;
 			}
 		}
 
-		*[class*="card"] {
+		*[class*='card'] {
 			border-radius: 0;
 			box-shadow: none;
 
@@ -222,8 +222,8 @@ $max-items-to-show: 4;
 
 @media screen and (width <= 550px) {
 	.left {
-		[class*="web-logo"] {
-			[class*="web-logo__block"] span {
+		[class*='web-logo'] {
+			[class*='web-logo__block'] span {
 				display: none;
 			}
 		}

@@ -1,11 +1,10 @@
-import React from "react";
-import HomeCard from "@/app/ui/components/pages/home/HomeCard";
-import { HOME_PAGE_CONTENTS, HOME_PAGE_METADATA } from "../../../../constants";
+import React from 'react';
+import HomeCard from '@/app/ui/components/pages/home/HomeCard';
+import { HOME_PAGE_CONTENTS, HOME_PAGE_METADATA } from '../../../../constants';
 
 export const metadata = {
-	...HOME_PAGE_METADATA
-}
-
+	...HOME_PAGE_METADATA,
+};
 async function HomePage() {
 	return (
 		<>

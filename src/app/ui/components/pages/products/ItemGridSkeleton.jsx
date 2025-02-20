@@ -1,17 +1,17 @@
-import React from "react";
-import styles from "./ItemGrid.module.scss";
-import ItemCardVerticalSkeleton from "../../itemCard/ItemCardVerticalSkeleton";
+import React from 'react';
+import styles from './ItemGrid.module.scss';
+import ItemCardVerticalSkeleton from '../../itemCard/ItemCardVerticalSkeleton';
 
-function ItemGridSkeleton({count = 20}) {
-    const skeletonItems = Array.from({ length: count });
+function ItemGridSkeleton({ count = 20 }) {
+	const skeletonItems = Array.from({ length: count });
 
-    return (
-        <div className={styles.gridItems}>
-            {skeletonItems.map((_, index) => (
-                <ItemCardVerticalSkeleton key={`ItemCardVerticalSkeleton-${index}`} />
-            ))}
-        </div>
-    );
+	return (
+		<div className={styles.gridItems}>
+			{skeletonItems.map((_, index) => (
+				<ItemCardVerticalSkeleton key={`ItemCardVerticalSkeleton-${index}`} />
+			))}
+		</div>
+	);
 }
 
 export default ItemGridSkeleton;

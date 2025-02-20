@@ -5,7 +5,9 @@
 	gap: 1ch;
 	font-size: 1em;
 	text-decoration: none;
-	transition: color 0.3s, background-color 0.3s ease-out;
+	transition:
+		color 0.3s,
+		background-color 0.3s ease-out;
 	background-color: var(--secondary-bg);
 	padding: 0.5em 1em;
 	border-radius: 0.5em;

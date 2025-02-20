@@ -1,10 +1,10 @@
-import React from "react";
-import styles from "./HomeCard.module.scss";
-import LinkBtn from "../../button/LinkBtn";
+import React from 'react';
+import styles from './HomeCard.module.scss';
+import LinkBtn from '../../button/LinkBtn';
 
 function HomeCard({
-	title = "This is title",
-	description = ["This is paragraph 1", "This is paragraph 2"],
+	title = 'This is title',
+	description = ['This is paragraph 1', 'This is paragraph 2'],
 	href = null,
 	buttonText = null,
 	icon = null,

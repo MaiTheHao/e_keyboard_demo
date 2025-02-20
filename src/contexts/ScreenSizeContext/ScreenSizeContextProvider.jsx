@@ -1,6 +1,6 @@
-"use client";
-import { useEffect, useState } from "react";
-import ScreenSizeContext from "./ScreenSizeContext";
+'use client';
+import { useEffect, useState } from 'react';
+import ScreenSizeContext from './ScreenSizeContext';
 
 export default function ScreenSizeContextProvider({ children }) {
 	const [screenSize, setScreenSize] = useState({
@@ -15,7 +15,7 @@ export default function ScreenSizeContextProvider({ children }) {
 	});
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
+		if (typeof window !== 'undefined') {
 			const handleResize = () => {
 				const width = window.innerWidth;
 				const height = window.innerHeight;
@@ -29,9 +29,9 @@ export default function ScreenSizeContextProvider({ children }) {
 			};
 
 			handleResize();
-			window.addEventListener("resize", handleResize);
+			window.addEventListener('resize', handleResize);
 
-			return () => window.removeEventListener("resize", handleResize);
+			return () => window.removeEventListener('resize', handleResize);
 		}
 	}, []);
 

@@ -1,5 +1,5 @@
-import normalize from "@/utils/normalize";
-import { upperFirst } from "@/utils/text";
+import normalize from '@/utils/normalize';
+import { upperFirst } from '@/utils/text';
 
 /**
  * Đại diện cho một sản phẩm bàn phím trong hệ thống
@@ -26,21 +26,21 @@ import { upperFirst } from "@/utils/text";
 export default class Product {
 	constructor({
 		_id = null,
-		name = "",
-		category = "",
-		brand = "",
-		layout = "",
-		caseMaterial = "",
-		collabTheme = "",
+		name = '',
+		category = '',
+		brand = '',
+		layout = '',
+		caseMaterial = '',
+		collabTheme = '',
 		rgbBacklit = false,
 		hotswap = false,
-		switchType = "",
+		switchType = '',
 		rappodTrigger = false,
 		tags = [],
 		price = 0,
-		currency = "VND",
-		model = "",
-		series = "",
+		currency = 'VND',
+		model = '',
+		series = '',
 		stock = 0,
 		src = null,
 		description = null,
@@ -108,24 +108,24 @@ export function convertToProducts(docs) {
 // Validation helper
 export function validateProduct(product) {
 	if (!product || !(product instanceof Product)) return false;
-	if (!product.name || typeof product.name !== "string") return false;
-	if (product.description !== null && typeof product.description !== "string") return false;
-	if (!product.category || typeof product.category !== "string") return false;
-	if (!product.brand || typeof product.brand !== "string") return false;
-	if (!product.layout || typeof product.layout !== "string") return false;
-	if (!product.caseMaterial || typeof product.caseMaterial !== "string") return false;
-	if (product.collabTheme !== null && typeof product.collabTheme !== "string") return false;
-	if (typeof product.rgbBacklit !== "boolean") return false;
-	if (typeof product.hotswap !== "boolean") return false;
-	if (!product.switchType || typeof product.switchType !== "string") return false;
-	if (typeof product.rappodTrigger !== "boolean") return false;
+	if (!product.name || typeof product.name !== 'string') return false;
+	if (product.description !== null && typeof product.description !== 'string') return false;
+	if (!product.category || typeof product.category !== 'string') return false;
+	if (!product.brand || typeof product.brand !== 'string') return false;
+	if (!product.layout || typeof product.layout !== 'string') return false;
+	if (!product.caseMaterial || typeof product.caseMaterial !== 'string') return false;
+	if (product.collabTheme !== null && typeof product.collabTheme !== 'string') return false;
+	if (typeof product.rgbBacklit !== 'boolean') return false;
+	if (typeof product.hotswap !== 'boolean') return false;
+	if (!product.switchType || typeof product.switchType !== 'string') return false;
+	if (typeof product.rappodTrigger !== 'boolean') return false;
 	if (!Array.isArray(product.tags)) return false;
-	if (typeof product.price !== "number") return false;
-	if (!product.currency || typeof product.currency !== "string") return false;
-	if (!product.model || typeof product.model !== "string") return false;
-	if (!product.series || typeof product.series !== "string") return false;
-	if (typeof product.stock !== "number") return false;
-	if (product.src !== null && typeof product.src !== "string") return false;
+	if (typeof product.price !== 'number') return false;
+	if (!product.currency || typeof product.currency !== 'string') return false;
+	if (!product.model || typeof product.model !== 'string') return false;
+	if (!product.series || typeof product.series !== 'string') return false;
+	if (typeof product.stock !== 'number') return false;
+	if (product.src !== null && typeof product.src !== 'string') return false;
 	return true;
 }
 
@@ -137,11 +137,13 @@ export function serializeProduct(input) {
 	}
 	const product = input instanceof Product ? input : new Product(input);
 	if (!validateProduct(product)) {
-		console.error('Không thể chuyển đổi sang plain text ở hàm serializeProduct do cấu trúc dữ liệu không hợp lệ.');
+		console.error(
+			'Không thể chuyển đổi sang plain text ở hàm serializeProduct do cấu trúc dữ liệu không hợp lệ.',
+		);
 	}
 	return {
 		id: product.getId(),
-		...product.getData()
+		...product.getData(),
 	};
 }
 

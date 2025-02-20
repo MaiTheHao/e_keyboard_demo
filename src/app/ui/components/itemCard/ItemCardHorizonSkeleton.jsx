@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./ItemCard.module.scss";
+import React from 'react';
+import styles from './ItemCard.module.scss';
 
 function ItemCardHorizonSkeleton() {
 	return (

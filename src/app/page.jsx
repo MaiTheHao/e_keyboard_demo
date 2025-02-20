@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
-export default function NavigateToHome(){
-	redirect("/home");
+export default function NavigateToHome() {
+	redirect('/home');
 }

@@ -1,30 +1,30 @@
-'use client'
-import React from "react";
-import styles from "./Footer.module.scss";
-import Logo from "../logo/Logo";
-import Link from "next/link";
-import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CREATOR } from "../../../../../constants";
+'use client';
+import React from 'react';
+import styles from './Footer.module.scss';
+import Logo from '../logo/Logo';
+import Link from 'next/link';
+import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CREATOR } from '../../../../../constants';
 
 const contactConfigs = [
 	{
-		href: "/facebook.com",
+		href: '/facebook.com',
 		icon: faFacebook,
-		title: "Facbook của chúng tôi.",
-		id: "facebook",
+		title: 'Facbook của chúng tôi.',
+		id: 'facebook',
 	},
 	{
-		href: "/instagram.com",
+		href: '/instagram.com',
 		icon: faInstagram,
-		title: "Instagram của chúng tôi.",
-		id: "instagram",
+		title: 'Instagram của chúng tôi.',
+		id: 'instagram',
 	},
 	{
-		href: "/youtube.com",
+		href: '/youtube.com',
 		icon: faYoutube,
-		title: "Youtube của chúng tôi.",
-		id: "youtube",
+		title: 'Youtube của chúng tôi.',
+		id: 'youtube',
 	},
 ];
 

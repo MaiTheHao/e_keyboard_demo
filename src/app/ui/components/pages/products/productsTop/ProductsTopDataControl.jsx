@@ -1,18 +1,18 @@
-"use client";
-import { faFilter, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import clsx from "clsx";
-import React, { useState } from "react";
+'use client';
+import { faFilter, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
+import React, { useState } from 'react';
 
-import { FILTER_FIELDS_OPTIONS, SORT_OPTIONS } from "../../../../../../../constants";
-import useProductsContext from "@/contexts/products/useProductsContext";
-import { upperFirst } from "@/utils/text";
-import styles from "./ProductsTop.module.scss";
-import { faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
+import { FILTER_FIELDS_OPTIONS, SORT_OPTIONS } from '../../../../../../../constants';
+import useProductsContext from '@/contexts/products/useProductsContext';
+import { upperFirst } from '@/utils/text';
+import styles from './ProductsTop.module.scss';
+import { faArrowDownWideShort } from '@fortawesome/free-solid-svg-icons';
 
 function FieldComponent({ title, field, thisFilter, handleSetThisFilter }) {
 	const options = FILTER_FIELDS_OPTIONS[field].options;
-	const isBool = options.includes("Yes");
+	const isBool = options.includes('Yes');
 	const generateKey = (index) => `${title}-${field}-${index}`;
 	return (
 		<li className={styles.filterWrapperContent__list__item}>
@@ -20,36 +20,35 @@ function FieldComponent({ title, field, thisFilter, handleSetThisFilter }) {
 			<ul className={styles.filterWrapperContent__list__item__options}>
 				{isBool
 					? [
-							{ value: null, label: "Tất cả" },
-							{ value: true, label: "Có" },
-							{ value: false, label: "Không" },
-					  ].map(({ value, label }, index) => (
+							{ value: null, label: 'Tất cả' },
+							{ value: true, label: 'Có' },
+							{ value: false, label: 'Không' },
+						].map(({ value, label }, index) => (
 							<button
 								key={generateKey(index)}
 								className={clsx(styles.filterWrapperContent__list__item__options__item, {
 									[styles.selected]: thisFilter[field] === value,
 								})}
-								onClick={() => handleSetThisFilter(field, value)}
-							>
+								onClick={() => handleSetThisFilter(field, value)}>
 								{upperFirst(label)}
 							</button>
-					  ))
-					: [{ value: [], label: "Tất cả" }, ...options.map((option) => ({ value: option, label: option }))].map(
-							({ value, label }, index) => (
-								<button
-									key={generateKey(index)}
-									className={clsx(styles.filterWrapperContent__list__item__options__item, {
-										[styles.selected]:
-											value.length === 0
-												? thisFilter[field].length === 0
-												: thisFilter[field].includes(value),
-									})}
-									onClick={() => handleSetThisFilter(field, value)}
-								>
-									{upperFirst(label)}
-								</button>
-							)
-					  )}
+						))
+					: [
+							{ value: [], label: 'Tất cả' },
+							...options.map((option) => ({ value: option, label: option })),
+						].map(({ value, label }, index) => (
+							<button
+								key={generateKey(index)}
+								className={clsx(styles.filterWrapperContent__list__item__options__item, {
+									[styles.selected]:
+										value.length === 0
+											? thisFilter[field].length === 0
+											: thisFilter[field].includes(value),
+								})}
+								onClick={() => handleSetThisFilter(field, value)}>
+								{upperFirst(label)}
+							</button>
+						))}
 			</ul>
 		</li>
 	);
@@ -88,7 +87,7 @@ function ProductsTopDataControl() {
 	};
 
 	const handleSetSort = (options) => {
-		if (options.value === "default") {
+		if (options.value === 'default') {
 			setSort(null);
 			return;
 		}
@@ -108,8 +107,7 @@ function ProductsTopDataControl() {
 								...wrapperVisible,
 								filterButton: !wrapperVisible.filterButton,
 							})
-						}
-					>
+						}>
 						<FontAwesomeIcon icon={faFilter} />
 						<span>Bộ lọc</span>
 					</button>
@@ -117,26 +115,25 @@ function ProductsTopDataControl() {
 				<div className={styles.filterBar__element}>
 					<button
 						className={styles.filterBar__element__button}
-						onClick={() => setWrapperVisible({ ...wrapperVisible, sortButton: !wrapperVisible.sortButton })}
-					>
+						onClick={() =>
+							setWrapperVisible({ ...wrapperVisible, sortButton: !wrapperVisible.sortButton })
+						}>
 						<FontAwesomeIcon icon={faArrowDownWideShort} />
 						<span>Sắp xếp</span>
 					</button>
 					<ul
 						className={styles.filterBar__element__wrapper}
-						style={{ display: wrapperVisible.sortButton ? "block" : "none" }}
-					>
+						style={{ display: wrapperVisible.sortButton ? 'block' : 'none' }}>
 						{SORT_OPTIONS.map((options, index) => {
 							return (
 								<li key={`sort-option-${options.value}`}>
 									<button
 										className={clsx(styles.sortOption, {
 											[styles.selected]:
-												sort?.value === options.value || (!sort && options.value === "default"),
+												sort?.value === options.value || (!sort && options.value === 'default'),
 										})}
 										onClick={() => handleSetSort(options)}
-										title={options.label}
-									>
+										title={options.label}>
 										{options.label}
 									</button>
 								</li>
@@ -145,10 +142,15 @@ function ProductsTopDataControl() {
 					</ul>
 				</div>
 			</ul>
-			<div className={clsx(styles.filterWrapperContainer, { [styles.visible]: wrapperVisible.filterButton })}>
+			<div
+				className={clsx(styles.filterWrapperContainer, {
+					[styles.visible]: wrapperVisible.filterButton,
+				})}>
 				<div className={styles.filterWrapperContent}>
 					<div className={styles.filterWrapperContent__header}>
-						<button className={styles.filterWrapperContent__header__close} onClick={() => setWrapperVisible(false)}>
+						<button
+							className={styles.filterWrapperContent__header__close}
+							onClick={() => setWrapperVisible(false)}>
 							<FontAwesomeIcon icon={faXmark} /> Đóng
 						</button>
 					</div>
@@ -167,13 +169,14 @@ function ProductsTopDataControl() {
 						})}
 					</ul>
 					<div className={styles.filterWrapperContent__buttons}>
-						<button className={styles.filterWrapperContent__buttons__discard} onClick={() => handleResetFilter()}>
+						<button
+							className={styles.filterWrapperContent__buttons__discard}
+							onClick={() => handleResetFilter()}>
 							Xóa lọc
 						</button>
 						<button
 							className={styles.filterWrapperContent__buttons__apply}
-							onClick={() => handleAsyncFilterToContext()}
-						>
+							onClick={() => handleAsyncFilterToContext()}>
 							Xem kết quả
 						</button>
 					</div>

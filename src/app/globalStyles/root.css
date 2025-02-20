@@ -31,15 +31,19 @@
 	--item-card-v-gap: 1ch;
 	--item-card-v-border-radius: calc(var(--item-card-v-width) / 40);
 	--item-card-v-padding: calc(var(--item-card-v-border-radius) / 0.8);
-	--item-card-v-inner-border-radius: calc(var(--item-card-v-border-radius) - var(--item-card-v-padding) / 2);
+	--item-card-v-inner-border-radius: calc(
+		var(--item-card-v-border-radius) - var(--item-card-v-padding) / 2
+	);
 	/* ITEM CARD HORIZON */
 	--item-card-h-height: 80px;
 	--item-card-h-font-size: calc(var(--item-card-h-height) / 16);
 	--item-card-h-border-radius: calc(var(--item-card-h-height) / 20);
 	--item-card-h-padding: calc(var(--item-card-h-border-radius) / 0.8);
-	--item-card-h-inner-border-radius: calc(var(--item-card-h-border-radius) - var(--item-card-h-padding) / 2);
+	--item-card-h-inner-border-radius: calc(
+		var(--item-card-h-border-radius) - var(--item-card-h-padding) / 2
+	);
 	/* OTHERS */
-	--primary-box-shadow: 0 0 .4ch rgba(0 0 0 / 20%);
+	--primary-box-shadow: 0 0 0.4ch rgba(0 0 0 / 20%);
 }
 
 @media screen and (max-width: 1200px) {

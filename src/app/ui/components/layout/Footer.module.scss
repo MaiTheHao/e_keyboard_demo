@@ -31,26 +31,28 @@
 			padding: 0.25em;
 			border-radius: 0.25em;
 			color: var(--primary-text);
-			transition: background-color 0.3s ease-out, color 0.5s ease-in;
+			transition:
+				background-color 0.3s ease-out,
+				color 0.5s ease-in;
 
 			&:hover {
 				background-color: var(--primary-text);
 			}
 		}
 
-		svg[id="facebook"] {
+		svg[id='facebook'] {
 			&:hover {
 				color: var(--facebook);
 			}
 		}
 
-		svg[id="instagram"] {
+		svg[id='instagram'] {
 			&:hover {
 				color: var(--instagram);
 			}
 		}
 
-		svg[id="youtube"] {
+		svg[id='youtube'] {
 			&:hover {
 				color: var(--youtube);
 			}

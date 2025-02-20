@@ -1,12 +1,12 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import styles from "./ItemGrid.module.scss";
-import ItemCard from "../../itemCard/ItemCardVertical";
-import ItemGridSkeleton from "./ItemGridSkeleton";
-import { getProductsByQuery } from "@/lib/fetchProduct";
-import useProductsContext from "@/contexts/products/useProductsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+'use client';
+import React, { useState, useEffect } from 'react';
+import styles from './ItemGrid.module.scss';
+import ItemCard from '../../itemCard/ItemCardVertical';
+import ItemGridSkeleton from './ItemGridSkeleton';
+import { getProductsByQuery } from '@/lib/fetchProduct';
+import useProductsContext from '@/contexts/products/useProductsContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const generateQuery = (filter, sort) => {
 	const newFilterQuery = filter
@@ -15,7 +15,7 @@ const generateQuery = (filter, sort) => {
 				if (Array.isArray(value) && value.length === 0) return ac;
 				ac[key] = Array.isArray(value) ? { $in: value } : value;
 				return ac;
-		  }, {})
+			}, {})
 		: {};
 	const newSortQuery = sort || null;
 
@@ -54,7 +54,12 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 			? { customOrder: query.sorter.customOrder, field: query.sorter.field }
 			: query.sorter?.mongoSort;
 
-		const response = await getProductsByQuery(query.filter, maxPerPage + 1, products.length, sortOption);
+		const response = await getProductsByQuery(
+			query.filter,
+			maxPerPage + 1,
+			products.length,
+			sortOption,
+		);
 
 		setAbleToLoadMore(response.length > maxPerPage);
 		setProducts((prev) => [...prev, ...response.slice(0, maxPerPage)]);
@@ -93,11 +98,13 @@ function ItemGrid({ initProps = { products: [], ableToLoadMore: false }, maxPerP
 			{(ableToLoadMore && (
 				<div className={styles.loadMore}>
 					{isPending.loadMore && (
-						<span style={{ color: "var(--third-text)" }}>
+						<span style={{ color: 'var(--third-text)' }}>
 							<FontAwesomeIcon icon={faSpinner} spin /> Đang tải...
 						</span>
 					)}
-					{!isPending.loadMore && <button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>}
+					{!isPending.loadMore && (
+						<button onClick={() => handleLoadMore()}>Xem thêm sản phẩm</button>
+					)}
 				</div>
 			)) || (
 				<div className={styles.noMore}>

@@ -1,10 +1,10 @@
-import LoadingComp from "./ui/components/loading/LoadingComp";
+import LoadingComp from './ui/components/loading/LoadingComp';
 
 function RootLoading() {
 	return (
 		<LoadingComp
-			iconStyle={{ animationDuration: "0.75s", animationTimingFunction: "ease-in-out" }}
-			message="Đang chuyển trang"
+			iconStyle={{ animationDuration: '0.75s', animationTimingFunction: 'ease-in-out' }}
+			message='Đang chuyển trang'
 		/>
 	);
 }

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
-import normalize from "@/utils/normalize";
-import { searchByTerm } from "@/lib/searchProduct";
-import styles from "./Header.module.scss";
-import ItemCardHorizon from "../itemCard/ItemCardHorizon";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
+import normalize from '@/utils/normalize';
+import { searchByTerm } from '@/lib/searchProduct';
+import styles from './Header.module.scss';
+import ItemCardHorizon from '../itemCard/ItemCardHorizon';
 
 const FETCH_ACTION_DELAY = 250;
 const CACHE_LIMIT = 10;
@@ -16,8 +16,8 @@ const SEARCH_LIMIT = 5;
 function HeaderSearchBar() {
 	const [searchState, setSearchState] = useState({
 		loadMoreCounter: 0,
-		term: "",
-		input: "",
+		term: '',
+		input: '',
 		results: [],
 		isLoading: false,
 		remain: false,
@@ -106,10 +106,15 @@ function HeaderSearchBar() {
 	return (
 		<>
 			<div className={styles.searchBar}>
-				<input type="text" placeholder="Tìm kiếm sản phẩm..." value={searchState.input} onChange={handleInputChange} />
+				<input
+					type='text'
+					placeholder='Tìm kiếm sản phẩm...'
+					value={searchState.input}
+					onChange={handleInputChange}
+				/>
 				<FontAwesomeIcon
 					icon={searchState.isLoading ? faSpinner : faSearch}
-					style={searchState.isLoading ? { color: "var(--primary-bg)" } : undefined}
+					style={searchState.isLoading ? { color: 'var(--primary-bg)' } : undefined}
 					spin={searchState.isLoading}
 				/>
 			</div>
@@ -120,13 +125,15 @@ function HeaderSearchBar() {
 							<ItemCardHorizon key={index} product={product} />
 						))}
 						{(searchState.remain && (
-							<button type="button" className={styles.viewMore} onClick={handleSearchMore}>
+							<button type='button' className={styles.viewMore} onClick={handleSearchMore}>
 								Xem thêm sản phẩm
 							</button>
 						)) || <li className={styles.noResults}>Không còn sản phẩm nào</li>}
 					</>
 				) : (
-					!searchState.isLoading && <li className={styles.noResults}>Không tìm thấy sản phẩm nào</li>
+					!searchState.isLoading && (
+						<li className={styles.noResults}>Không tìm thấy sản phẩm nào</li>
+					)
 				)}
 			</ul>
 		</>

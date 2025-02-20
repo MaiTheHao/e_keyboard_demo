@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import styles from "@/app/(pages)/products/Products.module.scss";
-import ProductsTopDataControl from "./ProductsTopDataControl";
+import React from 'react';
+import styles from '@/app/(pages)/products/Products.module.scss';
+import ProductsTopDataControl from './ProductsTopDataControl';
 
 function ProductsTop() {
 	return (

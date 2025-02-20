@@ -1,16 +1,14 @@
-import React from "react";
-import styles from "./Products.module.scss";
-import ProductsTop from "@/app/ui/components/pages/products/productsTop/ProductsTop";
-import ProductsContextProvider from "@/contexts/products/ProductsContextProvider";
+import React from 'react';
+import styles from './Products.module.scss';
+import ProductsTop from '@/app/ui/components/pages/products/productsTop/ProductsTop';
+import ProductsContextProvider from '@/contexts/products/ProductsContextProvider';
 
 async function layout({ children }) {
 	return (
 		<ProductsContextProvider>
 			<div className={styles.container}>
-				<ProductsTop/>
-				<div className={styles.body}>
-					{children}
-				</div>
+				<ProductsTop />
+				<div className={styles.body}>{children}</div>
 			</div>
 		</ProductsContextProvider>
 	);

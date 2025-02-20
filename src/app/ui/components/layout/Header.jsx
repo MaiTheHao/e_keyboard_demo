@@ -1,9 +1,9 @@
 'use client';
-import React from "react";
-import Logo from "../logo/Logo";
-import styles from "./Header.module.scss";
-import HeaderNavigate from "./HeaderNavigate";
-import HeaderSearchBar from "./HeaderSearchBar";
+import React from 'react';
+import Logo from '../logo/Logo';
+import styles from './Header.module.scss';
+import HeaderNavigate from './HeaderNavigate';
+import HeaderSearchBar from './HeaderSearchBar';
 
 function Header() {
 	return (

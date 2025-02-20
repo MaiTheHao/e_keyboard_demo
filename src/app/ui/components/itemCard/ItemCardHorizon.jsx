@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
-import PropTypes from "prop-types";
-import Image from "next/image";
-import styles from "./ItemCard.module.scss";
-import NullImage from "./NullImage";
-import Link from "next/link";
-import { ITEM_CARD_NAVIGATE_PATH } from "../../../../../constants";
-import { generateCurrencyString } from "@/utils/text";
+'use client';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Image from 'next/image';
+import styles from './ItemCard.module.scss';
+import NullImage from './NullImage';
+import Link from 'next/link';
+import { ITEM_CARD_NAVIGATE_PATH } from '../../../../../constants';
+import { generateCurrencyString } from '@/utils/text';
 
 function ItemCardHorizon({ product }) {
 	const itemHref = `${ITEM_CARD_NAVIGATE_PATH}/${product.id}`;
@@ -18,7 +18,7 @@ function ItemCardHorizon({ product }) {
 						src={product.src}
 						alt={`Ảnh sản phẩm: ${product.name}`}
 						fill
-						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 						priority
 					/>
 				) : (

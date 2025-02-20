@@ -12,7 +12,7 @@
 	overflow: hidden;
 	background-color: white;
 
-	img{
+	img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
@@ -41,7 +41,7 @@
 	.description {
 		font-size: 0.8em;
 		font-weight: 100; // Changed from 'thin' to '100'
-		color: var(--third-text); 
+		color: var(--third-text);
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
@@ -69,7 +69,7 @@
 		.name,
 		.description,
 		.price {
-			background-color: rgba(0, 0, 0, 20%); 
+			background-color: rgba(0, 0, 0, 20%);
 		}
 
 		.name {
@@ -85,7 +85,7 @@
 		}
 	}
 	.image {
-		background-color: rgba(0, 0, 0, 20%); 
+		background-color: rgba(0, 0, 0, 20%);
 		animation: skeleton-background 1s infinite ease-out;
 	}
 }
@@ -112,7 +112,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: rgba(0, 0, 0, 20%); 
+		background-color: rgba(0, 0, 0, 20%);
 		z-index: 1;
 		transition: opacity 0.3s ease-out;
 		border-radius: var(--item-card-v-inner-border-radius);
@@ -132,14 +132,14 @@
 
 	&.skeleton {
 		.image {
-			background-color: rgba(0, 0, 0, 20%); 
+			background-color: rgba(0, 0, 0, 20%);
 			animation: skeleton-background 1s infinite ease-out;
 		}
 		.details {
 			.name,
 			.description,
 			.price {
-				background-color: rgba(0, 0, 0, 20%); 
+				background-color: rgba(0, 0, 0, 20%);
 				animation: skeleton-background 1s infinite ease-out;
 			}
 		}
@@ -159,7 +159,7 @@
 	border-radius: var(--item-card-h-border-radius);
 
 	&:hover {
-		background-color: rgba(0, 0, 0, 50%); 
+		background-color: rgba(0, 0, 0, 50%);
 		.details {
 			.name,
 			.description {
@@ -185,7 +185,7 @@
 
 	&.skeleton {
 		.image {
-			background-color: rgba(0, 0, 0, 20%); 
+			background-color: rgba(0, 0, 0, 20%);
 			animation: skeleton-background 1s infinite ease-out;
 		}
 		.details {
@@ -194,28 +194,38 @@
 			.name,
 			.description,
 			.price {
-				background-color: rgba(0, 0, 0, 20%); 
+				background-color: rgba(0, 0, 0, 20%);
 				animation: skeleton-background 1s infinite ease-out;
 			}
 		}
 	}
 }
 
-@keyframes skeleton-background { 
+@keyframes skeleton-background {
 	0% {
-		background: linear-gradient(90deg, rgba(0, 0, 0, 10%) 25%, rgba(0, 0, 0, 20%) 50%, rgba(0, 0, 0, 10%) 75%); 
+		background: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 10%) 25%,
+			rgba(0, 0, 0, 20%) 50%,
+			rgba(0, 0, 0, 10%) 75%
+		);
 		background-position: 100% 50%;
 		background-size: 200% 100%;
 	}
 	100% {
-		background: linear-gradient(90deg, rgba(0, 0, 0, 10%) 25%, rgba(0, 0, 0, 20%) 50%, rgba(0, 0, 0, 10%) 75%); 
+		background: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 10%) 25%,
+			rgba(0, 0, 0, 20%) 50%,
+			rgba(0, 0, 0, 10%) 75%
+		);
 		background-position: 300% 50%;
 		background-size: 200% 100%;
 	}
 }
 
 @media screen and (max-width: 600px) {
-	.popupHoverContainer { 
+	.popupHoverContainer {
 		display: none;
 	}
 }
