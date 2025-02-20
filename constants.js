@@ -1,9 +1,8 @@
 import { faKeyboard, faFire, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 // IMPORTANT
-export const WEB_NAME = 'E-KEYBOARD';
-export const WEB_DESCRIPTION =
-	'Chúng tôi cung cấp các sản phẩm bàn phím chất lượng với giá cả phải chăng.';
+export const WEB_NAME = "E-KEYBOARD";
+export const WEB_DESCRIPTION = "Chúc mừng năm mới! Chúng tôi cung cấp các sản phẩm bàn phím chất lượng với giá cả phải chăng.";
 export const WEB_ICON = faKeyboard;
 export const CREATOR = 'KILLER';
 
